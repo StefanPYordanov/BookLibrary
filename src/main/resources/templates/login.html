@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Pathfinder</title>
+    <title>Book Library</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/mobile.css">
@@ -16,6 +16,13 @@
             integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
             crossorigin=""></script>
 </head>
+
+
+
+
+
+
+
 <body>
 <main class="p-5 align-content-center bg-blur my-register-div">
     <h1 class="    border-bottom mb-5">Login</h1>
@@ -23,46 +30,57 @@
 
         <div class="row g-3 align-items-center">
 
-            <form
-                    action="/"
-                    method="">
-                <div>
-                    <div class="col-auto">
-                        <label for="inputUsername" class="col-form-label ">Username</label>
-                    </div>
-                    <div class="col-auto">
-                        <input type="text"
-                               name="username"
-                               required minlength="4" maxlength="20"
-                               id="inputUsername"
-                               class="form-control"
-                               aria-describedby="usernameHelpInline">
-                    </div>
+            <form  th:action="@{/login}"
+                   method="">
+
+                <div class="form-outline mb-4 align-content-center">
+                    <input type="username" id="username" class="form-control" />
+                    <label class="form-label" for="username">Username</label>
                 </div>
-                <div>
-                    <div class="col-auto">
-                        <label for="inputPassword" class="col-form-label ">Password</label>
-                    </div>
-                    <div class="col-auto">
-                        <input type="password"
-                               name="password"
-                               required minlength="4" maxlength="20"
-                               id="inputPassword" class="form-control"
-                               aria-describedby="passwordHelpInline">
-                    </div>
+
+
+                <div class="form-outline mb-4 align-content-center">
+                    <input type="password" id="password" class="form-control" />
+                    <label class="form-label" for="password">Password</label>
                 </div>
-                <div class="d-flex justify-content-center mt-2">
-                    <button class="btn btn-primary btn-block w-50" type="submit">Login</button>
+
+
+
+
+                <!-- Submit button -->
+                <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+                <!-- Register buttons -->
+                <div class="text-center">
+
+                    <p class="text-danger" >Not a member? <a href="#!">Register</a></p>
+
                 </div>
             </form>
+
+
+
+
         </div>
 
     </div>
 </main>
+
+
+
+
+
+
+
+
+
+
+
+
 <footer class="footer bg-blur rounded">
     <div class="container-fluid text-center">
         <div class="h5 text-white">
-            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
+            Spring Advanced Students 2021. All rights reserved.
         </div>
     </div>
 </footer>
