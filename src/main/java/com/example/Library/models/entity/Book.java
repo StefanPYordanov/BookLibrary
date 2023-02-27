@@ -8,10 +8,13 @@ public class Book {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
+
+    @ManyToOne
+    private Author author;
 
     @ManyToOne
     private Genre genre;
@@ -19,14 +22,17 @@ public class Book {
     @Column(nullable = false)
     private long releaseYear;
 
+    @Column(nullable = false)
+    private long pages;
+
     public Book() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public Book setId(long id) {
+    public Book setId(Long id) {
         this.id = id;
         return this;
     }
@@ -37,6 +43,15 @@ public class Book {
 
     public Book setName(String name) {
         this.name = name;
+        return this;
+    }
+
+    public Author getAuthor() {
+        return author;
+    }
+
+    public Book setAuthor(Author author) {
+        this.author = author;
         return this;
     }
 
@@ -55,6 +70,15 @@ public class Book {
 
     public Book setReleaseYear(long releaseYear) {
         this.releaseYear = releaseYear;
+        return this;
+    }
+
+    public long getPages() {
+        return pages;
+    }
+
+    public Book setPages(long pages) {
+        this.pages = pages;
         return this;
     }
 }

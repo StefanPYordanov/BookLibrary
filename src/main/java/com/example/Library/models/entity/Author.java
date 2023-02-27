@@ -8,7 +8,7 @@ public class Author {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false)
     private String name;
@@ -22,11 +22,11 @@ public class Author {
     public Author() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public Author setId(long id) {
+    public Author setId(Long id) {
         this.id = id;
         return this;
     }

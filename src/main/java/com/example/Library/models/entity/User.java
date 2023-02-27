@@ -1,5 +1,6 @@
 package com.example.Library.models.entity;
 
+import com.example.Library.models.enums.RoleType;
 import jakarta.persistence.*;
 
 @Entity
@@ -8,7 +9,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(nullable = false, unique = true)
     private String username;
@@ -22,14 +23,17 @@ public class User {
     @Column(nullable = false)
     private String fullName;
 
+    @ManyToOne
+    private UserRole role;
+
     public User() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public User setId(long id) {
+    public User setId(Long id) {
         this.id = id;
         return this;
     }
@@ -67,6 +71,15 @@ public class User {
 
     public User setFullName(String fullName) {
         this.fullName = fullName;
+        return this;
+    }
+
+    public UserRole getRole() {
+        return role;
+    }
+
+    public User setRole(UserRole role) {
+        this.role = role;
         return this;
     }
 }

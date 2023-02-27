@@ -9,7 +9,7 @@ public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Enumerated(EnumType.STRING)
     private GenreType genreName;
@@ -20,11 +20,11 @@ public class Genre {
     public Genre() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public Genre setId(long id) {
+    public Genre setId(Long id) {
         this.id = id;
         return this;
     }

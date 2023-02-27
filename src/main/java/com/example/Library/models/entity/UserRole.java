@@ -9,7 +9,7 @@ public class UserRole {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Enumerated(EnumType.STRING)
     private RoleType role;
@@ -17,11 +17,11 @@ public class UserRole {
     public UserRole() {
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
-    public UserRole setId(long id) {
+    public UserRole setId(Long id) {
         this.id = id;
         return this;
     }
