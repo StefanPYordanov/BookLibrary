@@ -1,10 +1,10 @@
-package com.example.Library.models.entity;
+package com.example.Library.model.entity;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "authors")
-public class Author {
+public class AuthorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -19,14 +19,14 @@ public class Author {
     @Column(nullable = false)
     private String nationality;
 
-    public Author() {
+    public AuthorEntity() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public Author setId(Long id) {
+    public AuthorEntity setId(Long id) {
         this.id = id;
         return this;
     }
@@ -35,7 +35,7 @@ public class Author {
         return name;
     }
 
-    public Author setName(String name) {
+    public AuthorEntity setName(String name) {
         this.name = name;
         return this;
     }
@@ -44,7 +44,7 @@ public class Author {
         return yearOfBirth;
     }
 
-    public Author setYearOfBirth(long yearOfBirth) {
+    public AuthorEntity setYearOfBirth(long yearOfBirth) {
         this.yearOfBirth = yearOfBirth;
         return this;
     }
@@ -53,7 +53,7 @@ public class Author {
         return nationality;
     }
 
-    public Author setNationality(String nationality) {
+    public AuthorEntity setNationality(String nationality) {
         this.nationality = nationality;
         return this;
     }

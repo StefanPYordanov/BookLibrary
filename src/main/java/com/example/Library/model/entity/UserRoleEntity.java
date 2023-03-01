@@ -1,36 +1,36 @@
-package com.example.Library.models.entity;
+package com.example.Library.model.entity;
 
-import com.example.Library.models.enums.RoleType;
+import com.example.Library.model.enums.RoleTypeEnum;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "user-roles")
-public class UserRole {
+public class UserRoleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private RoleType role;
+    private RoleTypeEnum role;
 
-    public UserRole() {
+    public UserRoleEntity() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public UserRole setId(Long id) {
+    public UserRoleEntity setId(Long id) {
         this.id = id;
         return this;
     }
 
-    public RoleType getRole() {
+    public RoleTypeEnum getRole() {
         return role;
     }
 
-    public UserRole setRole(RoleType role) {
+    public UserRoleEntity setRole(RoleTypeEnum role) {
         this.role = role;
         return this;
     }

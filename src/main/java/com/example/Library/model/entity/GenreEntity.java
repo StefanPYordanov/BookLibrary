@@ -1,39 +1,39 @@
-package com.example.Library.models.entity;
+package com.example.Library.model.entity;
 
-import com.example.Library.models.enums.GenreType;
+import com.example.Library.model.enums.GenreTypeEnum;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "genres")
-public class Genre {
+public class GenreEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Enumerated(EnumType.STRING)
-    private GenreType genreName;
+    private GenreTypeEnum genreName;
 
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    public Genre() {
+    public GenreEntity() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public Genre setId(Long id) {
+    public GenreEntity setId(Long id) {
         this.id = id;
         return this;
     }
 
-    public GenreType getGenreName() {
+    public GenreTypeEnum getGenreName() {
         return genreName;
     }
 
-    public Genre setGenreName(GenreType genreName) {
+    public GenreEntity setGenreName(GenreTypeEnum genreName) {
         this.genreName = genreName;
         return this;
     }
@@ -42,7 +42,7 @@ public class Genre {
         return description;
     }
 
-    public Genre setDescription(String description) {
+    public GenreEntity setDescription(String description) {
         this.description = description;
         return this;
     }

@@ -1,11 +1,10 @@
-package com.example.Library.models.entity;
+package com.example.Library.model.entity;
 
-import com.example.Library.models.enums.RoleType;
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "users")
-public class User {
+public class UserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,16 +23,16 @@ public class User {
     private String fullName;
 
     @ManyToOne
-    private UserRole role;
+    private UserRoleEntity role;
 
-    public User() {
+    public UserEntity() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public User setId(Long id) {
+    public UserEntity setId(Long id) {
         this.id = id;
         return this;
     }
@@ -42,7 +41,7 @@ public class User {
         return username;
     }
 
-    public User setUsername(String username) {
+    public UserEntity setUsername(String username) {
         this.username = username;
         return this;
     }
@@ -51,7 +50,7 @@ public class User {
         return password;
     }
 
-    public User setPassword(String password) {
+    public UserEntity setPassword(String password) {
         this.password = password;
         return this;
     }
@@ -60,7 +59,7 @@ public class User {
         return email;
     }
 
-    public User setEmail(String email) {
+    public UserEntity setEmail(String email) {
         this.email = email;
         return this;
     }
@@ -69,16 +68,16 @@ public class User {
         return fullName;
     }
 
-    public User setFullName(String fullName) {
+    public UserEntity setFullName(String fullName) {
         this.fullName = fullName;
         return this;
     }
 
-    public UserRole getRole() {
+    public UserRoleEntity getRole() {
         return role;
     }
 
-    public User setRole(UserRole role) {
+    public UserEntity setRole(UserRoleEntity role) {
         this.role = role;
         return this;
     }

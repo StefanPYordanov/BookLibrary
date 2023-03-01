@@ -23,4 +23,9 @@ public class PagesController {
         return "register";
     }
 
+    @GetMapping ("/spotlight")
+    public String spotlight(){
+        return "spotlight";
+    }
+
 }

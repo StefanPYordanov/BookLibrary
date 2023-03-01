@@ -1,10 +1,10 @@
-package com.example.Library.models.entity;
+package com.example.Library.model.entity;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name = "books")
-public class Book {
+public class BookEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,10 +14,10 @@ public class Book {
     private String name;
 
     @ManyToOne
-    private Author author;
+    private AuthorEntity author;
 
     @ManyToOne
-    private Genre genre;
+    private GenreEntity genre;
 
     @Column(nullable = false)
     private long releaseYear;
@@ -25,14 +25,14 @@ public class Book {
     @Column(nullable = false)
     private long pages;
 
-    public Book() {
+    public BookEntity() {
     }
 
     public Long getId() {
         return id;
     }
 
-    public Book setId(Long id) {
+    public BookEntity setId(Long id) {
         this.id = id;
         return this;
     }
@@ -41,25 +41,25 @@ public class Book {
         return name;
     }
 
-    public Book setName(String name) {
+    public BookEntity setName(String name) {
         this.name = name;
         return this;
     }
 
-    public Author getAuthor() {
+    public AuthorEntity getAuthor() {
         return author;
     }
 
-    public Book setAuthor(Author author) {
+    public BookEntity setAuthor(AuthorEntity author) {
         this.author = author;
         return this;
     }
 
-    public Genre getGenre() {
+    public GenreEntity getGenre() {
         return genre;
     }
 
-    public Book setGenre(Genre genre) {
+    public BookEntity setGenre(GenreEntity genre) {
         this.genre = genre;
         return this;
     }
@@ -68,7 +68,7 @@ public class Book {
         return releaseYear;
     }
 
-    public Book setReleaseYear(long releaseYear) {
+    public BookEntity setReleaseYear(long releaseYear) {
         this.releaseYear = releaseYear;
         return this;
     }
@@ -77,7 +77,7 @@ public class Book {
         return pages;
     }
 
-    public Book setPages(long pages) {
+    public BookEntity setPages(long pages) {
         this.pages = pages;
         return this;
     }
