@@ -1,9 +1,7 @@
 package com.example.Library.service;
 
-import com.example.Library.model.entity.AuthorEntity;
-import com.example.Library.model.entity.BookEntity;
-import com.example.Library.model.entity.UserEntity;
-import com.example.Library.model.entity.UserRoleEntity;
+import com.example.Library.model.entity.*;
+import com.example.Library.model.enums.GenreTypeEnum;
 import com.example.Library.model.enums.RoleTypeEnum;
 import com.example.Library.repository.AuthorRepository;
 import com.example.Library.repository.GenreRepository;
@@ -34,7 +32,8 @@ public class InitService {
     public void init() {
         initRoles();
         initUsers();
-
+        initAuthor();
+        initGenres();
     }
 
     private void initRoles() {
@@ -99,37 +98,63 @@ public class InitService {
     }
 
     private void initAuthor(){
-        var author = new AuthorEntity()
-                .setName("J. K. Rowling")
-                .setNationality("British")
-                .setYearOfBirth(1965);
+        if (genreRepository.count() == 0) {
 
-        var author2 = new AuthorEntity()
-                .setName("J. R. R. Tolkien")
-                .setNationality("British")
-                .setYearOfBirth(1892);
+            var author = new AuthorEntity()
+                    .setName("J. K. Rowling")
+                    .setNationality("British")
+                    .setYearOfBirth(1965);
 
-        var author3 = new AuthorEntity()
-                .setName("Samuel Bjork")
-                .setNationality("Norway")
-                .setYearOfBirth(1969);
+            var author2 = new AuthorEntity()
+                    .setName("J. R. R. Tolkien")
+                    .setNationality("British")
+                    .setYearOfBirth(1892);
 
-        authorRepository.save(author);
-        authorRepository.save(author2);
-        authorRepository.save(author3);
+            var author3 = new AuthorEntity()
+                    .setName("Samuel Bjork")
+                    .setNationality("Norway")
+                    .setYearOfBirth(1969);
+
+            authorRepository.save(author);
+            authorRepository.save(author2);
+            authorRepository.save(author3);
+        }
     }
 
-/*    private void initBook(){
-        var genre = genreRepository.
-                findUserRoleByRole(GenreTypeEnum.Fantasy).orElseThrow();
-
-        var book = new BookEntity()
-                .setName("Harry Potter and the Philosopher stone")
-                .setAuthor()
-                .setGenre()
-                .setReleaseYear()
-                .setPages();
+//    private void initBook(){
+//        var genre = genreRepository.
+//                findGenreByGenreName(GenreTypeEnum.Fantasy).orElseThrow();
+//
+//
+//            var author = authorRepository.
+//                    findAuthorByName().orElseThrow();
+//
+//        var book = new BookEntity()
+//                .setName("Harry Potter and the Philosopher stone")
+//                .setAuthor()
+//                .setGenre(genre)
+//                .setReleaseYear(1997)
+//                .setPages(223);
 
                 //TODO: init 3 books in database !!!
-    }*/
+//    }
+
+    private void initGenres(){
+        if (genreRepository.count() == 0){
+            var fantasy = new GenreEntity().setGenreName(GenreTypeEnum.Fantasy);
+            var thriller = new GenreEntity().setGenreName(GenreTypeEnum.Thriller);
+            var drama = new GenreEntity().setGenreName(GenreTypeEnum.Drama);
+            var sciFi = new GenreEntity().setGenreName(GenreTypeEnum.SciFi);
+            var romance = new GenreEntity().setGenreName(GenreTypeEnum.Romance);
+            var fiction = new GenreEntity().setGenreName(GenreTypeEnum.Fiction);
+
+            genreRepository.save(fantasy);
+            genreRepository.save(thriller);
+            genreRepository.save(drama);
+            genreRepository.save(sciFi);
+            genreRepository.save(romance);
+            genreRepository.save(fiction);
+        }
+    }
 }
+
