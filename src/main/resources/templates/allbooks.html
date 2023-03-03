@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Pathfinder</title>
+    <title>Book Library</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/mobile.css">
@@ -17,57 +17,101 @@
             integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
             crossorigin=""></script>
 </head>
+
+
+
+
+
 <body>
 <div class="wrapper">
     <!-- Navigation -->
     <header>
-    <nav class="main-nav">
-        <ul>
-                <li>
-                    <a href="/">Home</a>
-                </li>
-                <li>
-                    <a href="/">Login</a>
-                </li>
-                <li>
-                    <a href="/">Register</a>
-                </li>
-                <li>
-                    <a href="/">About</a>
-                </li>
-				<li>
-                    <a href="/">Add new route</a>
-                </li>
-                <li>
-                    <a href="/">Profile</a>
-                </li>
-                <li>
-                    <a href="/">Admin</a>
-                </li>
-                <li>
-                    <a href="/">Logout</a>
-                </li>
-        </ul>
-    </nav>
+
+
+
+
+
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="collapse navbar-collapse" id="navbar">
+
+
+
+
+
+
+
+                <ul
+
+                        class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" th:href="@{/}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/login}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/register}">Register</a>
+
+
+                </ul>
+
+
+
+
+
+
+
+
+                <a class="nav-link" th:href="@{/profile}">
+                    <img width="50px" src="/images/profilepicture.jpg" alt="Profile Picture">
+                </a>
+
+
+
+
+
+
+
+
+
+            </div>
+        </nav>
+
+
+
+
+
 </header>
 
-    <section class="road">
-        <img src="/images/pic4.jpg" alt="Title image">
+
+
+
+    <section class="road" th:each="bookEntity : ${books}">
+<!--        <img th:src="*{imageUrl}" alt="Title image">-->
         <div>
-            <h2>Your Route</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Vitae alias reiciendis deleniti possimus nemo
-                non repellendus?
-                Quae atque vero modi quidem! Autem cupiditate fugit doloribus ad amet, asperiores provident commodi.</p>
-            <a href="/" class="btn">Learn More</a>
+            <h2 th:text="${book.name}">Your Route</h2>
+<!--            <p th:text="*{description}"></p>-->
+<!--            <a th:href="@{/routes/{id}(id=*{id})}" class="btn">Learn More</a>-->
         </div>
     </section>
+
+
+
 </div>
 <!-- Wrapper Ends -->
 </body>
+
+
+
+
+
+
+
 <footer class="footer bg-blur rounded">
     <div class="container-fluid text-center">
         <div class="h5 text-white">
-            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
+            Spring Advanced Students 2021. All rights reserved.
         </div>
     </div>
 </footer>

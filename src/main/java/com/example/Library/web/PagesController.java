@@ -33,4 +33,8 @@ public class PagesController {
         return "profile";
     }
 
+    @GetMapping ("/allbooks")
+    public String allbooks(){
+        return "allbooks";
+    }
 }

@@ -47,9 +47,20 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/register}">Register</a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/aboutus}">AboutUs</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/logout}">Logout</a>
+                    </li>
 
                 </ul>
+
+
+
 
 
 
@@ -105,7 +116,7 @@
 
 
     <section class="boxes">
-        <a href="/" class="main-btn" >
+        <a th:href="@{/allbooks}" class="main-btn" >
             <div class="box">
 
                 <h3>All Books</h3>
