@@ -28,4 +28,9 @@ public class PagesController {
         return "spotlight";
     }
 
+    @GetMapping ("/profile")
+    public String profile(){
+        return "profile";
+    }
+
 }

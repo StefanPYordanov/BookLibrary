@@ -17,77 +17,177 @@
             integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
             crossorigin=""></script>
 </head>
+
+
+
+
 <body>
+
+
+
 <header>
-    <nav class="main-nav">
-        <ul>
-                <li>
-                    <a href="/">Home</a>
+
+
+
+
+
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="collapse navbar-collapse" id="navbar">
+
+
+
+
+
+
+
+            <ul
+
+                    class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" th:href="@{/}">Home</a>
                 </li>
-                <li>
-                    <a href="/">Login</a>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/login}">Login</a>
                 </li>
-                <li>
-                    <a href="/">Register</a>
-                </li>
-                <li>
-                    <a href="/">About</a>
-                </li>
-				<li>
-                    <a href="/">Add new route</a>
-                </li>
-                <li>
-                    <a href="/">Profile</a>
-                </li>
-                <li>
-                    <a href="/">Admin</a>
-                </li>
-                <li>
-                    <a href="/">Logout</a>
-                </li>
-        </ul>
+                <li class="nav-item">
+                    <a class="nav-link" th:href="@{/register}">Register</a>
+
+
+            </ul>
+
+
+
+
+
+
+
+
+            <a class="nav-link" th:href="@{/profile}">
+                <img width="50px" src="/images/profilepicture.jpg" alt="Profile Picture">
+            </a>
+
+
+
+
+
+
+
+
+
+        </div>
     </nav>
+
+
+
+
+
+
+
+
+
+
 </header>
-<main class="p-5 align-content-center bg-blur my-register-div">
-    <div class="container mt-5">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-7">
-                <div class="profile-card p-3 py-4">
-                    <div class="text-center"><img src="/images/profile.jpg" width="100" class="rounded-circle"></div>
-                    <div class="text-center mt-3">
-                        <span class="bg-secondary p-1 px-4 rounded text-white">Pro</span>
-                        <h5 class="mt-4 mb-0">Full name</h5>
-                        <span>UI/UX Designer</span>
-                        <h5 class="mt-2 mb-0">Username</h5>
-                        <span>UI/UX Designer</span>
-                        <h5 class="mt-2 mb-0">Age</h5>
-                        <span>33</span>
-                        <div class="px-4 mt-5">
-                            <p class="fonts">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim et nostrum
-                                optio perferendis quam quod ratione rem sit soluta ut! A dolor laborum, maiores neque
-                                nesciunt quis rerum sunt suscipit. </p>
-                        </div>
-                        <ul class="social-list">
-                            <li><i class="fab fa-facebook-square"></i></li>
-                            <li><i class="fab fa-instagram"></i></li>
-                            <li><i class="fab fa-linkedin"></i></li>
-                            <li><i class="fab fa-google"></i></li>
-                        </ul>
-                        <div class="buttons">
-                            <button class="btn btn-outline-primary px-4">Back</button>
-<!--                            <button class="btn btn-primary px-4 ms-3">Contact</button>-->
-                        </div>
-                    </div>
+
+
+
+<main class="p-5 align-content-center my-register-div bg-light">
+
+    <h1 class="border-bottom mb-5">Profile</h1>
+
+
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body text-center">
+                    <img src="/images/profilepicture.jpg" alt="avatar"
+                         class="rounded-circle img-fluid" style="width: 150px;">
+
+
+
                 </div>
             </div>
+
+        </div>
+        <div class="col-lg-8">
+            <div class="card mb-4">
+                <div class="card-body">
+
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">Username</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="text-muted mb-0">JohnatanSmith10</p>
+                        </div>
+                    </div>
+                    <hr>
+
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">Full Name</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="text-muted mb-0">Johnatan Smith</p>
+                        </div>
+                    </div>
+
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">Email</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="text-muted mb-0">example@example.com</p>
+                        </div>
+                    </div>
+
+
+
+                    <hr>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <p class="mb-0">Role</p>
+                        </div>
+                        <div class="col-sm-9">
+                            <p class="text-muted mb-0">User</p>
+                        </div>
+                    </div>
+                    <hr>
+
+
+
+
+
+
+                </div>
+            </div>
+
         </div>
     </div>
+    </div>
+    </section>
+
+
+
+
 </main>
 </body>
+
+
+
+
+
+
 <footer class="footer bg-blur rounded">
     <div class="container-fluid text-center">
         <div class="h5 text-white">
-            &copy; Lucho, Chocho & Spring Advanced Students 2021. All rights reserved.
+            Spring Advanced Students 2021. All rights reserved.
         </div>
     </div>
 </footer>

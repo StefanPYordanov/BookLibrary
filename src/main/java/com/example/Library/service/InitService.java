@@ -98,12 +98,33 @@ public class InitService {
 
     private void initContent(){
 
-        var fantasy = new GenreEntity().setGenreName(GenreTypeEnum.Fantasy);
-        var thriller = new GenreEntity().setGenreName(GenreTypeEnum.Thriller);
-        var drama = new GenreEntity().setGenreName(GenreTypeEnum.Drama);
-        var sciFi = new GenreEntity().setGenreName(GenreTypeEnum.SciFi);
-        var romance = new GenreEntity().setGenreName(GenreTypeEnum.Romance);
-        var fiction = new GenreEntity().setGenreName(GenreTypeEnum.Fiction);
+        var fantasy = new GenreEntity()
+                .setGenreName(GenreTypeEnum.Fantasy)
+                .setDescription("Fantasy fiction is a genre of writing in which" +
+                        " the plot could not happen in real life (as we know it, at least). " +
+                        "Often, the plot involves magic or witchcraft and takes place" +
+                        " on another planet or in another — undiscovered — dimension of this world.");
+        var thriller = new GenreEntity()
+                .setGenreName(GenreTypeEnum.Thriller)
+                .setDescription("Thriller is a genre of fiction with numerous, " +
+                        "often overlapping, subgenres, including crime, horror and detective fiction.");
+        var drama = new GenreEntity()
+                .setGenreName(GenreTypeEnum.Drama)
+                .setDescription("A drama is a type of narrative writing that is meant to be performed in front of an audience.");
+        var sciFi = new GenreEntity()
+                .setGenreName(GenreTypeEnum.SciFi)
+                .setDescription("Science fiction, also often known as 'sci-fi'," +
+                        " is a genre of literature that is imaginative and based around science.");
+        var romance = new GenreEntity()
+                .setGenreName(GenreTypeEnum.Romance)
+                .setDescription("The romance genre is defined by two aspects" +
+                        " that can be found in every romance book or novel: a central love story between" +
+                        " characters. an emotionally satisfying, happy ending.");
+        var fiction = new GenreEntity()
+                .setGenreName(GenreTypeEnum.Fiction)
+                .setDescription("Genre fiction, also known as popular fiction," +
+                        " is a term used in the book-trade for fictional works written with the intent of fitting into a " +
+                        "specific literary genre, in order to appeal to readers and fans already familiar with that genre.");
 
         if (genreRepository.count() == 0){
 
