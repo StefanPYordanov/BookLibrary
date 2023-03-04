@@ -27,7 +27,7 @@ public class SecurityConfiguration {
                 // allow access to all static files (images, CSS, js)
                         requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                 // the URL-s below are available for all users - logged in and anonymous
-                        requestMatchers("/", "/login", "/register", "/spotlight", "/profile", "/allbooks", "/about").permitAll().
+                        requestMatchers("/", "/login", "/register", "/spotlight", "/profile", "/allbooks", "/about", "/addbook").permitAll().
                 anyRequest().authenticated().
                 and().
                 // configure login with HTML form
@@ -57,3 +57,7 @@ public class SecurityConfiguration {
         return new ApplicationUserDetailsService(userRepository);
     }*/
 }
+
+//  private GrantedAuthority extractAuthorities(UserEntity userEntity) {
+//        return mapRole(userEntity.getRole());
+//    }

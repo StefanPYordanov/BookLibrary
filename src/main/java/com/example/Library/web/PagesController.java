@@ -42,4 +42,11 @@ public class PagesController {
     public String about(){
         return "about";
     }
+
+    @GetMapping ("/addbook")
+    public String addbook(){
+        return "addbook";
+    }
+
+
 }
