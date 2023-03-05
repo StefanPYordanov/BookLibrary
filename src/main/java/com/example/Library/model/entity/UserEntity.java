@@ -2,6 +2,9 @@ package com.example.Library.model.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "users")
 public class UserEntity {
@@ -22,8 +25,8 @@ public class UserEntity {
     @Column(nullable = false)
     private String fullName;
 
-    @ManyToOne
-    private UserRoleEntity role;
+    @ManyToOne (fetch = FetchType.EAGER)
+    private List<UserRoleEntity> roles = new ArrayList<>();
 
     public UserEntity() {
     }
@@ -73,12 +76,12 @@ public class UserEntity {
         return this;
     }
 
-    public UserRoleEntity getRole() {
-        return role;
+    public List<UserRoleEntity> getRoles() {
+        return roles;
     }
 
-    public UserEntity setRole(UserRoleEntity role) {
-        this.role = role;
+    public UserEntity setRoles(List<UserRoleEntity> roles) {
+        this.roles = roles;
         return this;
     }
 }

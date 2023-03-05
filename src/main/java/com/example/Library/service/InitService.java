@@ -56,32 +56,26 @@ public class InitService {
     }
 
     private void initAdmin() {
-        var adminRole = userRoleRepository.
-                findUserRoleByRole(RoleTypeEnum.ADMIN).orElseThrow();
-
 
         var admin = new UserEntity()
                 .setUsername("admin")
                 .setPassword("admin12345")
                 .setEmail("admin@example.com")
                 .setFullName("Admin Adminov")
-                .setRole(adminRole);
+                .setRoles(userRoleRepository.findAll());
 
 
         userRepository.save(admin);
     }
 
     private void initModerator() {
-        var moderatorRole = userRoleRepository.
-                findUserRoleByRole(RoleTypeEnum.MODERATOR).orElseThrow();
-
 
         var moderator = new UserEntity()
                 .setUsername("moderator")
                 .setPassword("moderator12345")
                 .setEmail("moderator@example.com")
                 .setFullName("Moderator Moderatov")
-                .setRole(moderatorRole);
+                .setRoles(userRoleRepository.findAll());
 
         userRepository.save(moderator);
     }

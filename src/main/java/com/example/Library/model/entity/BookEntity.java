@@ -13,10 +13,10 @@ public class BookEntity {
     @Column(nullable = false)
     private String name;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private AuthorEntity author;
 
-    @ManyToOne
+    @ManyToOne (fetch = FetchType.EAGER)
     private GenreEntity genre;
 
     @Column(nullable = false)
