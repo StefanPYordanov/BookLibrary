@@ -25,7 +25,7 @@ public class UserEntity {
     @Column(nullable = false)
     private String fullName;
 
-    @ManyToOne (fetch = FetchType.EAGER)
+    @ManyToMany (fetch = FetchType.EAGER)
     private List<UserRoleEntity> roles = new ArrayList<>();
 
     public UserEntity() {
