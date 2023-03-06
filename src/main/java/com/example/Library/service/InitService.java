@@ -6,6 +6,7 @@ import com.example.Library.model.enums.RoleTypeEnum;
 import com.example.Library.repository.*;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -18,14 +19,17 @@ public class InitService {
 
     private final BookRepository bookRepository;
 
+    private final PasswordEncoder passwordEncoder;
+
     @Autowired
     public InitService(UserRoleRepository userRoleRepository, UserRepository userRepository, AuthorRepository authorRepository,
-                       GenreRepository genreRepository, BookRepository bookRepository) {
+                       GenreRepository genreRepository, BookRepository bookRepository, PasswordEncoder passwordEncoder) {
         this.userRoleRepository = userRoleRepository;
         this.userRepository = userRepository;
         this.authorRepository = authorRepository;
         this.genreRepository = genreRepository;
         this.bookRepository = bookRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     @PostConstruct
@@ -59,7 +63,7 @@ public class InitService {
 
         var admin = new UserEntity()
                 .setUsername("admin")
-                .setPassword("admin12345")
+                .setPassword(passwordEncoder.encode("admin12345"))
                 .setEmail("admin@example.com")
                 .setFullName("Admin Adminov")
                 .setRoles(userRoleRepository.findAll());
@@ -72,7 +76,7 @@ public class InitService {
 
         var moderator = new UserEntity()
                 .setUsername("moderator")
-                .setPassword("moderator12345")
+                .setPassword(passwordEncoder.encode("moderator12345"))
                 .setEmail("moderator@example.com")
                 .setFullName("Moderator Moderatov")
                 .setRoles(userRoleRepository.findAll());
@@ -83,7 +87,7 @@ public class InitService {
     private void initUser() {
         var user = new UserEntity()
                 .setUsername("user")
-                .setPassword("user12345")
+                .setPassword(passwordEncoder.encode("user12345"))
                 .setEmail("user@example.com")
                 .setFullName("User Userov");
 

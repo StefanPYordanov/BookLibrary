@@ -1,5 +1,6 @@
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.w3.org/1999/xhtml">
 
 <head th:replace="~{fragments/head::head}">
 
@@ -43,13 +44,11 @@
                     </li>
 
 
-                        <li class="nav-item justify-content-end">
-                            <a class="nav-link" th:href="@{/logout}">Logout</a>
-                        </li>
-
                     <li class="nav-item justify-content-end">
                             <a class="nav-link" th:href="@{/addbook}">AddBook</a>
                         </li>
+
+
 
 
 
@@ -57,10 +56,27 @@
 
 
 
+                    <li class="nav-item" sec:authorize="isAuthenticated()">
+                        <div class="form-inline my-2 my-lg-0 px-3">
+                            <div class="text-dark">Welcome, <th:block sec:authentication="name"></th:block>!</div>
+                            <form
+                                    th:method="post"
+                                    th:action="@{/logout}">
+                                <input class="btn btn-link nav-link" type="submit" value="Logout">
+                            </form>
+                        </div>
+                    </li>
 
-                <a class="nav-link" th:href="@{/profile}">
-                    <img width="50px" src="/images/profilepicture.jpg" alt="Profile Picture">
-                </a>
+
+                    <a class="nav-link" th:href="@{/profile}">
+                        <img width="50px" src="/images/profilepicture.jpg" alt="Profile Picture">
+                    </a>
+
+
+
+
+
+
 
 
 
