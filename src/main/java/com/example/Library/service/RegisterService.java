@@ -31,6 +31,13 @@ public class RegisterService {
 
         if (byEmail.isPresent()) {
             throw new RuntimeException("email.used");
+
+        }
+
+        Optional<UserEntity> byUsername = this.userRepository.findUserEntityByUsername(registrationDTO.getUsername());
+
+        if (byUsername.isPresent()) {
+            throw new RuntimeException("username.used");
         }
 
         UserEntity user = new UserEntity(
