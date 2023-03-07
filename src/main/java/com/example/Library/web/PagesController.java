@@ -13,11 +13,6 @@ public class PagesController {
         return "index";
     }
 
-    @GetMapping ("/register")
-    public String register(){
-        return "register";
-    }
-
     @GetMapping ("/spotlight")
     public String spotlight(){
         return "spotlight";
