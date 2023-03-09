@@ -72,7 +72,7 @@
 
 
             <form th:action="@{/register}"
-                  method="POST"
+                  th:method="POST"
                   th:object="${registrationDTO}">
 
 
@@ -96,7 +96,7 @@
                            th:field="*{username}"
                            th:errorclass="is-invalid"
                            required
-                           minlength="5" maxlength="20"
+                           minlength="4" maxlength="20"
                            type="text"
                            id="inputUsername"
                            class="form-control"
@@ -145,7 +145,7 @@
 
                     <input name="password"
                            th:field="*{password}"
-                           required minlength="5" maxlength="20"
+                           required minlength="6" maxlength="20"
                            type="password"
                            id="inputPassword"
                            class="form-control"
@@ -169,7 +169,7 @@
 
                     <input name="repeatPassword"
                            th:field="*{repeatPassword}"
-                           required minlength="5" maxlength="20"
+                           required minlength="6" maxlength="20"
                            type="password"
                            id="inputRepeatPassword"
                            class="form-control"
@@ -196,6 +196,7 @@
                     <input name="fullName"
                            th:field="*{fullName}"
                            th:errorclass="is-invalid"
+                           required minlength="5" maxlength="50"
                            type="text"
                            id="inputFullName"
                            class="form-control"

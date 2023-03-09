@@ -28,6 +28,9 @@ public class BookEntity {
     public BookEntity() {
     }
 
+    public BookEntity(String name, AuthorEntity author, GenreEntity genre, long releaseYear, long pages) {
+    }
+
     public Long getId() {
         return id;
     }

@@ -29,10 +29,7 @@ public class PagesController {
         return "about";
     }
 
-    @GetMapping ("/addbook")
-    public String addbook(){
-        return "addbook";
-    }
+
 
 
 }

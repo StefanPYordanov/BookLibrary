@@ -21,4 +21,60 @@ public class AddBookDto {
 
     @Size(min = 0)
     private long pages;
+
+    public AddBookDto() {
+    }
+
+    public AddBookDto(String name, AuthorEntity author, GenreEntity genre, long releaseYear, long pages) {
+        this.name = name;
+        this.author = author;
+        this.genre = genre;
+        this.releaseYear = releaseYear;
+        this.pages = pages;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public AddBookDto setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public AuthorEntity getAuthor() {
+        return author;
+    }
+
+    public AddBookDto setAuthor(AuthorEntity author) {
+        this.author = author;
+        return this;
+    }
+
+    public GenreEntity getGenre() {
+        return genre;
+    }
+
+    public AddBookDto setGenre(GenreEntity genre) {
+        this.genre = genre;
+        return this;
+    }
+
+    public long getReleaseYear() {
+        return releaseYear;
+    }
+
+    public AddBookDto setReleaseYear(long releaseYear) {
+        this.releaseYear = releaseYear;
+        return this;
+    }
+
+    public long getPages() {
+        return pages;
+    }
+
+    public AddBookDto setPages(long pages) {
+        this.pages = pages;
+        return this;
+    }
 }
