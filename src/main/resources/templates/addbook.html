@@ -118,8 +118,8 @@
 
         <div>
             <div class="form-group">
-                <label for="author">Author</label>
-                <select id="author" class="custom-select">
+                <label for="authorList">Author</label>
+                <select id="authorList" class="custom-select">
                     <option value="" selected>Select author</option>
                 </select>
             </div>
@@ -130,11 +130,9 @@
 
         <div>
             <div class="form-group">
-                <label for="genre">Genre</label>
-                <select id="genre" class="custom-select">
-                    <tr th:each="genre: ${ganre}">
-                        <option th:text="${genre.genre}" th:value="${genre.genre}"></option>
-                    </tr>
+                <label for="genreList">Genre</label>
+                <select id="genreList" class="custom-select">
+                    <option  th:each="option : ${options}" th:value="${option}" th:text="${option}">Select genre</option>
                 </select>
             </div>
         </div>

@@ -40,12 +40,12 @@ public class RegisterService {
             throw new RuntimeException("username.used");
         }
 
-        UserEntity user = new UserEntity(
-                registrationDTO.getUsername(),
-                registrationDTO.getEmail(),
-                passwordEncoder.encode(registrationDTO.getPassword()),
-                registrationDTO.getFullName()
-        );
+        UserEntity user = new UserEntity().
+                setUsername(registrationDTO.getUsername()).
+                setEmail(registrationDTO.getEmail()).
+                setPassword(passwordEncoder.encode(registrationDTO.getPassword())).
+                setFullName(registrationDTO.getFullName());
+
 
         this.userRepository.save(user);
     }
