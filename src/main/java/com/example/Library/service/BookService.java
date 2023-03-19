@@ -1,6 +1,7 @@
 package com.example.Library.service;
 
 import com.example.Library.model.dto.AddBookDto;
+import com.example.Library.model.dto.BookViewDto;
 import com.example.Library.model.dto.RegistrationDto;
 import com.example.Library.model.entity.BookEntity;
 import com.example.Library.model.entity.UserEntity;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class BookService {
@@ -39,4 +41,27 @@ public class BookService {
 
         this.bookRepository.save(book);
     }
+
+    public List<BookViewDto> getAllBooks() {
+        return bookRepository.findAll().stream().map(book -> new BookViewDto(
+                book.getId(),
+                book.getName(),
+                book.getAuthor(),
+                book.getGenre(),
+                book.getReleaseYear(),
+                book.getPages()
+        )).collect(Collectors.toList());
+    }
+
+    public BookViewDto getBook(Long id) {
+        return bookRepository.findById(id).map(book -> new BookViewDto(
+                book.getId(),
+                book.getName(),
+                book.getAuthor(),
+                book.getGenre(),
+                book.getReleaseYear(),
+                book.getPages()
+        )).orElseThrow(RuntimeException::new);
+    }
 }
+

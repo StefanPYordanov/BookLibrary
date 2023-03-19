@@ -74,12 +74,15 @@
 
 
 
-    <section class="road" th:each="bookEntity : ${books}">
-<!--        <img th:src="*{imageUrl}" alt="Title image">-->
+
+    <section class="road" th:each="book : ${books}" th:object="${book}">
         <div>
-            <h2 th:text="${book.name}">Your Route</h2>
-<!--            <p th:text="*{description}"></p>-->
-<!--            <a th:href="@{/routes/{id}(id=*{id})}" class="btn">Learn More</a>-->
+            <h2 th:text="*{name}">Your Name</h2>
+            <p th:text="*{author}">Your Author</p>
+            <p th:text="*{genre}">Your Genre</p>
+            <p th:text="*{releaseYear}">Release Year</p>
+            <p th:text="*{pages}">Pages</p>
+            <a th:href="@{/routes/details/{id}(id=*{id})}" class="btn">Learn More</a>
         </div>
     </section>
 

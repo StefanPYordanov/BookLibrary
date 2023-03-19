@@ -1,6 +1,7 @@
 package com.example.Library.web;
 
 import com.example.Library.model.dto.AddBookDto;
+import com.example.Library.model.dto.BookViewDto;
 import com.example.Library.model.entity.GenreEntity;
 import com.example.Library.repository.GenreRepository;
 import com.example.Library.service.BookService;
@@ -9,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -59,5 +57,21 @@ public class BookController {
 
     }
 
+    @GetMapping ("/allbooks")
+    public String allbooks(Model model){
+        List<BookViewDto> books = bookService.getAllBooks();
+
+        model.addAttribute("books", books);
+        return "allbooks";
+    }
+
+    @GetMapping("/details/{id}")
+    public String getRoute(@PathVariable("id") Long bookId, Model model) {
+        BookViewDto book = bookService.getBook(bookId);
+
+        model.addAttribute("book", book);
+
+        return "book-details";
+    }
 
 }
