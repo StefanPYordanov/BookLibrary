@@ -1,16 +1,19 @@
 package com.example.Library.model.dto;
 
+import com.example.Library.validations.PasswordMatch;
 import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
+@PasswordMatch(password = "password", confirmPassword = "confirmPassword")
 public class RegistrationDto {
 
     @NotNull
     @Size(min = 4, max = 20)
     private String username;
 
-    @NotNull
+    @NotBlank
     @Email
     private String email;
 
