@@ -120,7 +120,7 @@
             <div class="form-group">
                 <label for="authorList">Author</label>
                 <select id="authorList" class="custom-select">
-                    <option value="" selected>Select author</option>
+                    <option th:each="author : ${author}" th:value="*{name}" th:text="*{author.authorName}" selected>Select author</option>
                 </select>
             </div>
         </div>
@@ -132,7 +132,9 @@
             <div class="form-group">
                 <label for="genreList">Genre</label>
                 <select id="genreList" class="custom-select">
-                    <option  th:each="option : ${options}" th:value="${option}" th:text="${option}">Select genre</option>
+                    <option  th:each="genreOptions : ${T(com.example.Library.model.enums.GenreTypeEnum.values()}"
+                             th:value="${genreOptions}" th:text="${genreOptions}">Select genre</option>
+
                 </select>
             </div>
         </div>
@@ -146,7 +148,7 @@
                 <input name="releaseYear"
                        th:field="*{releaseYear}"
                        th:errorclass="is-invalid"
-                       required minlength="1" maxlength="20"
+                       required minlength="1"
                        type="text"
                        id="releaseYear"
                        class="form-control"
@@ -161,7 +163,7 @@
                 <input name="pages"
                        th:field="*{pages}"
                        th:errorclass="is-invalid"
-                       required minlength="1" maxlength="20"
+                       required minlength="1"
                        type="text"
                        id="pages"
                        class="form-control"

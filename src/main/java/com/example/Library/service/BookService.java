@@ -42,7 +42,7 @@ public class BookService {
         this.bookRepository.save(book);
     }
 
-    public List<BookViewDto> getAllBooks() {
+/*    public List<BookViewDto> getAllBooks() {
         return bookRepository.findAll().stream().map(book -> new BookViewDto(
                 book.getId(),
                 book.getName(),
@@ -51,7 +51,7 @@ public class BookService {
                 book.getReleaseYear(),
                 book.getPages()
         )).collect(Collectors.toList());
-    }
+    }*/
 
     public BookViewDto getBook(Long id) {
         return bookRepository.findById(id).map(book -> new BookViewDto(
@@ -63,5 +63,27 @@ public class BookService {
                 book.getPages()
         )).orElseThrow(RuntimeException::new);
     }
+
+
+    public List<BookViewDto> getAllBooks() {
+        return
+                bookRepository.
+                        findAll().
+                        stream().
+                        map(this::map).
+                        toList();
+    }
+
+    private BookViewDto map(BookEntity bookEntity) {
+        return new BookViewDto()
+                .setId(bookEntity.getId())
+                .setName(bookEntity.getName())
+                .setAuthor(bookEntity.getAuthor().getName())
+                .setGenre(bookEntity.getGenre().getGenreName().toString())
+                .setReleaseYear(bookEntity.getReleaseYear())
+                .setPages(bookEntity.getPages());
+
+    }
 }
+
 

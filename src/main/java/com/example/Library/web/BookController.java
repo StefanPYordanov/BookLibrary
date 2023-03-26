@@ -2,8 +2,10 @@ package com.example.Library.web;
 
 import com.example.Library.model.dto.AddBookDto;
 import com.example.Library.model.dto.BookViewDto;
-import com.example.Library.model.entity.GenreEntity;
+import com.example.Library.model.entity.AuthorEntity;
+import com.example.Library.repository.AuthorRepository;
 import com.example.Library.repository.GenreRepository;
+import com.example.Library.service.AuthorService;
 import com.example.Library.service.BookService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +23,17 @@ public class BookController {
 
     private final BookService bookService;
     private final GenreRepository genreRepository;
+    private final AuthorRepository authorRepository;
+
+    private final AuthorService authorService;
 
     @Autowired
-    public BookController(BookService bookService, GenreRepository genreRepository) {
+    public BookController(BookService bookService, GenreRepository genreRepository,
+                          AuthorRepository authorRepository, AuthorService authorService) {
         this.bookService = bookService;
         this.genreRepository = genreRepository;
+        this.authorRepository = authorRepository;
+        this.authorService = authorService;
     }
 
     @GetMapping("/addbook")
@@ -41,8 +49,12 @@ public class BookController {
     @PostMapping("/addbook")
     public String doAddBook(@Valid AddBookDto addBookDto,
                              BindingResult bindingResult,
-                             RedirectAttributes redirectAttributes) {
+                             RedirectAttributes redirectAttributes, Model model) {
         System.out.println(addBookDto.toString());
+
+        var allAuthors = authorService.getAllAuthors();
+        model.addAttribute("author", allAuthors);
+
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("addBookDto", addBookDto);
@@ -57,11 +69,15 @@ public class BookController {
 
     }
 
-    @GetMapping ("/allbooks")
-    public String allbooks(Model model){
-        List<BookViewDto> books = bookService.getAllBooks();
 
-        model.addAttribute("books", books);
+
+    @GetMapping ("/allbooks")
+    public String getAllBooks(Model model) {
+
+        var allBooks = bookService.getAllBooks();
+
+        model.addAttribute("books", allBooks);
+
         return "allbooks";
     }
 

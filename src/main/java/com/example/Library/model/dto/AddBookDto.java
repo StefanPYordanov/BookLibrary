@@ -16,10 +16,10 @@ public class AddBookDto {
     @NotNull
     private GenreEntity genre;
 
-    @Size(min = 0)
+
     private long releaseYear;
 
-    @Size(min = 0)
+
     private long pages;
 
     public AddBookDto() {
