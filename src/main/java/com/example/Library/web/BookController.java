@@ -37,7 +37,11 @@ public class BookController {
     }
 
     @GetMapping("/addbook")
-    public String addbook(){
+    public String addbook(Model model){
+
+     List<AuthorEntity> authors = authorService.getAllAuthors();
+     model.addAttribute("authors", authors);
+
         return "addbook";
     }
 
@@ -49,11 +53,8 @@ public class BookController {
     @PostMapping("/addbook")
     public String doAddBook(@Valid AddBookDto addBookDto,
                              BindingResult bindingResult,
-                             RedirectAttributes redirectAttributes, Model model) {
+                             RedirectAttributes redirectAttributes) {
         System.out.println(addBookDto.toString());
-
-        var allAuthors = authorService.getAllAuthors();
-        model.addAttribute("author", allAuthors);
 
 
         if (bindingResult.hasErrors()) {

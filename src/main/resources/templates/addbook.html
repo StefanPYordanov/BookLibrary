@@ -120,9 +120,11 @@
             <div class="form-group">
                 <label for="authorList">Author</label>
                 <select id="authorList" class="custom-select">
-                    <option th:each="author : ${author}" th:value="*{name}" th:text="*{author.authorName}" selected>Select author</option>
+                    <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.name}" selected>Select author</option>
                 </select>
             </div>
+            <p class="text-center mt-5 mb-0 text-danger">Author Does Not Exist ?<a th:href="@{/}"
+                                                                                   class="fw-bold text-body"><u>Add it here</u></a></p>
         </div>
 
 
@@ -132,7 +134,7 @@
             <div class="form-group">
                 <label for="genreList">Genre</label>
                 <select id="genreList" class="custom-select">
-                    <option  th:each="genreOptions : ${T(com.example.Library.model.enums.GenreTypeEnum.values()}"
+                    <option  th:each="genreOptions : ${T(com.example.Library.model.enums.GenreTypeEnum).values()}"
                              th:value="${genreOptions}" th:text="${genreOptions}">Select genre</option>
 
                 </select>

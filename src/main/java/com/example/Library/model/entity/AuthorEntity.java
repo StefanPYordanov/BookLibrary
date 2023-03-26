@@ -22,6 +22,9 @@ public class AuthorEntity {
     public AuthorEntity() {
     }
 
+    public AuthorEntity(String name, long yearOfBirth, String nationality) {
+    }
+
     public Long getId() {
         return id;
     }
