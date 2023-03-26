@@ -6,7 +6,6 @@ import jakarta.validation.constraints.Size;
 public class AddAuthorDto {
 
     @NotNull
-    @Size(min = 3)
     private String name;
 
     @NotNull
