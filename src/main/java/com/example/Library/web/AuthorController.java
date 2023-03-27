@@ -5,6 +5,7 @@ import com.example.Library.service.AuthorService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -49,8 +50,18 @@ public class AuthorController {
 
         this.authorService.addAuthor(addAuthorDto);
 
-        return "redirect:/allauthor";
+        return "redirect:/allauthors";
 
+    }
+
+    @GetMapping ("/allauthors")
+    public String getAllAuthors(Model model) {
+
+        var allAuthors = authorService.getAuthors();
+
+        model.addAttribute("authors", allAuthors);
+
+        return "allauthors";
     }
 
 }

@@ -7,6 +7,7 @@ import com.example.Library.repository.AuthorRepository;
 import com.example.Library.repository.GenreRepository;
 import com.example.Library.service.AuthorService;
 import com.example.Library.service.BookService;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -66,7 +67,7 @@ public class BookController {
 
         this.bookService.addBook(addBookDto);
 
-        return "redirect:/allbook";
+        return "redirect:/allbooks";
 
     }
 

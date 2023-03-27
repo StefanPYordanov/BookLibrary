@@ -3,6 +3,7 @@ package com.example.Library.service;
 
 import com.example.Library.model.dto.AddAuthorDto;
 import com.example.Library.model.dto.AddBookDto;
+import com.example.Library.model.dto.BookViewDto;
 import com.example.Library.model.entity.AuthorEntity;
 import com.example.Library.model.entity.BookEntity;
 import com.example.Library.model.entity.UserEntity;
@@ -28,13 +29,31 @@ public class AuthorService {
 
     public void addAuthor(AddAuthorDto addAuthorDto) {
 
-        AuthorEntity author = new AuthorEntity(
-                addAuthorDto.getName(),
-                addAuthorDto.getYearOfBirth(),
-                addAuthorDto.getNationality()
-        );
+        AuthorEntity author = new AuthorEntity()
+                .setName(addAuthorDto.getName())
+                .setYearOfBirth(addAuthorDto.getYearOfBirth())
+                .setNationality(addAuthorDto.getNationality());
+
 
         this.authorRepository.save(author);
     }
 
+    public List<AddAuthorDto> getAuthors() {
+        return
+                authorRepository.
+                        findAll().
+                        stream().
+                        map(this::map).
+                        toList();
+    }
+
+    private AddAuthorDto map(AuthorEntity authorEntity) {
+        return new AddAuthorDto()
+                .setName(authorEntity.getName())
+                .setYearOfBirth(authorEntity.getYearOfBirth())
+                .setNationality(authorEntity.getNationality());
+
+    }
 }
+
+

@@ -4,13 +4,35 @@
 <head th:replace="~{fragments/head::head}">
 
 </head>
-
 <body>
 <div class="wrapper">
-    <header th:replace="fragments/header"></header>
+
+    <section class="spotlight text-center">
+
+        <div class="p-3 mb-2 bg-dark text-white">
+
+
+        </div>
+    </section>
+
 
     <input type="hidden" name="bookId" id="bookId" th:value="${book.id}">
+
     <div class="details-main" th:object="${book}">
+
+        <h1 class ="text-info text-center" >The Ink Black Heart</h1>
+
+        <section class="road" th:each="book : ${book}" th:object="${book}">
+            <div>
+                <h2 th:text="*{name}">Your Name</h2>
+                <p th:text="*{author}">Your Author</p>
+                <p th:text="*{genre}">Your Genre</p>
+                <p th:text="*{releaseYear}">Release Year</p>
+                <p th:text="*{pages}">Pages</p>
+
+            </div>
+        </section>
+
         <section class="route-info text-center">
             <h4 id="name" th:text="*{name}"></h4>
             <p>Author name: <span th:text="${author}" id="author"></span></p>
@@ -19,10 +41,11 @@
 
 
 
+
             <h1>Comments</h1>
-            <div>
+            <div >
                 <!-- Comments submission -->
-                <form id="commentForm" method="POST"
+                <form  id="commentForm" method="POST"
                       action="/">
                     <div class="form-group">
                         <h4>Leave a comment</h4>
@@ -61,6 +84,15 @@
     <script th:src="@{/js/track.js}"></script> -->
     <script th:src="@{/js/comments.js}"></script>
 </div>
-<footer th:replace="fragments/footer"></footer>
+
+<footer class="footer bg-blur rounded">
+    <div class="container-fluid text-center">
+        <div class="h5 text-white">
+            Spring Advanced Students 2021. All rights reserved.
+        </div>
+    </div>
+</footer>
+
+
 </body>
 </html>

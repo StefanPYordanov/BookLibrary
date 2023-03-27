@@ -31,13 +31,13 @@ public class BookService {
 
     public void addBook(AddBookDto addBookDto) {
 
-        BookEntity book = new BookEntity(
-                addBookDto.getName(),
-                addBookDto.getAuthor(),
-                addBookDto.getGenre(),
-                addBookDto.getReleaseYear(),
-                addBookDto.getPages()
-        );
+        BookEntity book = new BookEntity()
+                .setName(addBookDto.getName())
+                .setAuthor(addBookDto.getAuthor())
+                .setGenre(addBookDto.getGenre())
+                .setReleaseYear(addBookDto.getReleaseYear())
+                .setPages(addBookDto.getPages());
+
 
         this.bookRepository.save(book);
     }
