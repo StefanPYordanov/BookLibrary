@@ -8,7 +8,6 @@
 
 
 
-
 <body>
 <div class="wrapper">
     <!-- Navigation -->
@@ -75,12 +74,12 @@
 
 
 
-    <section class="road" th:each="author : ${authors}" th:object="${authors}">
+    <section class="road" th:each="author : ${authors}" th:object="${author}">
         <div>
             <h2 th:text="*{name}">Your Name</h2>
             <p th:text="*{yearOfBirth}">Your Year</p>
             <p th:text="*{nationality}">Your Nationality</p>
-            <a th:href="@{/details/{id}(id=*{id})}" class="btn">Learn More</a>
+
         </div>
     </section>
 

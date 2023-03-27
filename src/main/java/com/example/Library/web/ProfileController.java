@@ -20,16 +20,18 @@ public class ProfileController {
         this.userService = userService;
     }
 
+    //TODO Fix profile page (didn't work)
+
     @GetMapping("/profile")
     public String profile(Principal principal, Model model){
         String username = principal.getName();
         UserEntity userEntity = userService.getUser(username);
 
-        UserProfileDto userProfileDto = new UserProfileDto(
-                username,
-                userEntity.getEmail(),
-                userEntity.getFullName()
-        );
+        UserProfileDto userProfileDto = new UserProfileDto()
+                .setUsername(username)
+                .setEmail(userEntity.getEmail())
+                .setFullName(userEntity.getFullName());
+
 
         model.addAttribute("user", userProfileDto);
 
