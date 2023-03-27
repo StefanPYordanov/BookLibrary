@@ -118,8 +118,8 @@
 
         <div>
             <div class="form-group">
-                <label for="authorList">Author</label>
-                <select id="authorList" class="custom-select">
+                <label for="author">Author</label>
+                <select id="author" class="custom-select"  th:field="*{author}">
                     <option th:each="author : ${authors}" th:value="${author.id}" th:text="${author.name}" selected>Select author</option>
                 </select>
             </div>
@@ -132,10 +132,10 @@
 
         <div>
             <div class="form-group">
-                <label for="genreList">Genre</label>
-                <select id="genreList" class="custom-select">
-                    <option  th:each="genreOptions : ${T(com.example.Library.model.enums.GenreTypeEnum).values()}"
-                             th:value="${genreOptions}" th:text="${genreOptions}">Select genre</option>
+                <label for="genre">Genre</label>
+                <select id="genre" class="custom-select" th:field="*{genre}"  >
+                    <option th:each="genre : ${genres}" th:value="${genre.id}" th:text="${genre.genreName}" selected>Select author</option>
+
 
                 </select>
             </div>

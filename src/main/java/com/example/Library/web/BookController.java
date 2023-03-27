@@ -3,11 +3,12 @@ package com.example.Library.web;
 import com.example.Library.model.dto.AddBookDto;
 import com.example.Library.model.dto.BookViewDto;
 import com.example.Library.model.entity.AuthorEntity;
+import com.example.Library.model.entity.GenreEntity;
 import com.example.Library.repository.AuthorRepository;
 import com.example.Library.repository.GenreRepository;
 import com.example.Library.service.AuthorService;
 import com.example.Library.service.BookService;
-import jakarta.transaction.Transactional;
+import com.example.Library.service.GenreService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,14 +27,17 @@ public class BookController {
     private final GenreRepository genreRepository;
     private final AuthorRepository authorRepository;
 
+    private final GenreService genreService;
+
     private final AuthorService authorService;
 
     @Autowired
     public BookController(BookService bookService, GenreRepository genreRepository,
-                          AuthorRepository authorRepository, AuthorService authorService) {
+                          AuthorRepository authorRepository, GenreService genreService, AuthorService authorService) {
         this.bookService = bookService;
         this.genreRepository = genreRepository;
         this.authorRepository = authorRepository;
+        this.genreService = genreService;
         this.authorService = authorService;
     }
 
@@ -42,6 +46,9 @@ public class BookController {
 
      List<AuthorEntity> authors = authorService.getAllAuthors();
      model.addAttribute("authors", authors);
+
+     List<GenreEntity> genres = genreService.getAllGenres();
+     model.addAttribute("genres", genres);
 
         return "addbook";
     }
