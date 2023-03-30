@@ -3,6 +3,7 @@ package com.example.Library.web;
 import com.example.Library.model.dto.UserProfileDto;
 import com.example.Library.model.entity.UserEntity;
 import com.example.Library.service.UserService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;

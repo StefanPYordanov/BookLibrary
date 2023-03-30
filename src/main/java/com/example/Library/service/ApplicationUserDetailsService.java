@@ -31,7 +31,7 @@ public class ApplicationUserDetailsService implements UserDetailsService {
 
     private UserDetails map(UserEntity userEntity) {
         return new User(
-                userEntity.getEmail(),
+                userEntity.getUsername(),
                 userEntity.getPassword(),
                 extractAuthorities(userEntity)
         );
