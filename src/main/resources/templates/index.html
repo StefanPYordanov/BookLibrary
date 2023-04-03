@@ -62,7 +62,9 @@
                     <li class="nav-item justify-content-end">
                         <a class="nav-link" th:href="@{/allauthors}">AllAuthors</a>
                     </li>
-
+                    <li class="nav-item justify-content-end">
+                        <a class="nav-link" th:href="@{/admin}">Admin</a>
+                    </li>
 
                 </ul>
 
@@ -126,7 +128,7 @@
         <img src="/images/spotlight-book.jpg" alt="">
         <div>
             <h2>Spotlight Book</h2>
-            <p>This month we recommend to our reader </p>
+            <p>This month we recommend to our readers </p>
             <a th:href="@{/spotlight}" class="btn">Learn More</a>
         </div>
     </section>
@@ -142,10 +144,10 @@
 
             </div>
         </a>
-        <a href="/" class="main-btn" >
+        <a th:href="@{/allauthors}" class="main-btn" >
             <div class="box">
 
-                <h3>New Books</h3>
+                <h3>All Authors</h3>
 
             </div>
         </a>
@@ -169,12 +171,8 @@
 </div>
 <!-- Wrapper Ends -->'
 
-<footer class="footer bg-blur rounded">
-    <div class="container-fluid text-center">
-        <div class="h5 text-white">
-            Spring Advanced Students 2021. All rights reserved.
-        </div>
-    </div>
+<footer th:replace="~{fragments/footer::footer}">
+
 </footer>
 
 

@@ -5,12 +5,12 @@ import com.example.Library.model.enums.RoleTypeEnum;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
+import java.util.List;
 
 
 @Repository
 public interface UserRoleRepository extends JpaRepository <UserRoleEntity, Long> {
 
-    Optional<UserRoleEntity> findUserRoleByRole(RoleTypeEnum role);
+    List<UserRoleEntity> findUserRoleByRole(RoleTypeEnum role);
 
 }

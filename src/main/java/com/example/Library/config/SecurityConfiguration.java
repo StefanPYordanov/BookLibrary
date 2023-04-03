@@ -29,7 +29,7 @@ public class SecurityConfiguration {
                 // allow access to all static files (images, CSS, js)
                         requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
                 // the URL-s below are available for all users - logged in and anonymous
-                        requestMatchers("/", "/login", "/register", "/spotlight", "/profile", "/allbooks", "/about", "/addbook", "/error", "/routes/**", "/addauthor", "/allauthors").permitAll().
+                        requestMatchers("/", "/login", "/register", "/spotlight", "/profile", "/allbooks", "/about", "/addbook", "/error", "/details/**", "/addauthor", "/allauthors", "/book-details", "/admin").permitAll().
                 anyRequest().authenticated().
                 and().
                 // configure login with HTML form

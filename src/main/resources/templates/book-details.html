@@ -7,27 +7,6 @@
 <body>
 <div class="wrapper">
 
-    <section class="spotlight text-center">
-
-        <div class="p-3 mb-2 bg-dark text-white">
-
-            <h1 class ="text-info text-center" >The Ink Black Heart</h1>
-
-            <section class="road" th:each="book : ${book}" th:object="${book}">
-                <div>
-                    <h2 th:text="*{name}">Your Name</h2>
-                    <p th:text="*{author}">Your Author</p>
-                    <p th:text="*{genre}">Your Genre</p>
-                    <p th:text="*{releaseYear}">Release Year</p>
-                    <p th:text="*{pages}">Pages</p>
-
-                </div>
-            </section>
-
-        </div>
-    </section>
-
-
     <input type="hidden" name="bookId" id="bookId" th:value="${book.id}">
 
     <div class="details-main" th:object="${book}">
@@ -44,7 +23,7 @@
             <div >
                 <!-- Comments submission -->
                 <form  id="commentForm" method="POST"
-                      action="/">
+                      action="@{/details/{id}(id=*{id})}">
                     <div class="form-group">
                         <h4>Leave a comment</h4>
                         <label for="message">Message</label>
