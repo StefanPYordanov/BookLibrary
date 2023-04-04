@@ -1,111 +1,38 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{fragments/head::head}">
+<head th:replace="~{fragments/head::head}"></head>
 
-</head>
 <body>
+
 <div class="wrapper">
 
     <header>
 
-
-
-
-
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse" id="navbar">
-
-
-
-
-
-
-
-                <ul
-
-                        class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/login}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/register}">Register</a>
-
-
-                </ul>
-
-
-
-
-
-
-
-
-                <a class="nav-link" href="/">
-                    <img width="50px" src="/images/profilepicture.jpg" alt="Profile Picture">
-                </a>
-
-
-
-
-
-
-
-
-
-            </div>
-        </nav>
-
-
-
-
-
+        <nav th:replace="~{fragments/navbar::navbar}"></nav>
 
     </header>
 
 
-
-
-
-
-
-
-
-
-
-
-
     <section class="spotlight text-center">
-        <img src="/images/spotlight-book.jpg" alt="">
+        <img alt="" src="/images/spotlight-book.jpg">
         <div class="p-3 mb-2 bg-dark text-white">
 
-            <h1 class ="text-info text-center" >The Ink Black Heart</h1>
+            <h1 class="text-info text-center">The Ink Black Heart</h1>
 
             <h3>The Ink Black Heart is a crime fiction novel
                 by the English author J. K. Rowling,
                 written under the pseudonym Robert Galbraith.
-                It is the sixth and the longest novel in the Cormoran Strike series.  </h3>
-
+                It is the sixth and the longest novel in the Cormoran Strike series. </h3>
 
         </div>
     </section>
 
 
-
 </div>
-<!-- Wrapper Ends -->'
 
-<footer class="footer bg-blur rounded">
-    <div class="container-fluid text-center">
-        <div class="h5 text-white">
-            Spring Advanced Students 2021. All rights reserved.
-        </div>
-    </div>
-</footer>
+<footer th:replace="~{fragments/footer::footer}"></footer>
+
 </body>
 
 </html>

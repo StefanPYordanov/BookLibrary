@@ -1,149 +1,67 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{fragments/head::head}">
-
-</head>
-
-
-
+<head th:replace="~{fragments/head::head}"></head>
 
 <body>
 
-
-
 <header>
 
-
-
-
-
-
-
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbar">
-
-
-
-
-
-
-
-            <ul
-
-                    class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/login}">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/register}">Register</a>
-
-
-            </ul>
-
-
-
-
-
-
-
-
-            <a class="nav-link" th:href="@{/profile}">
-                <img width="50px" src="/images/profilepicture.jpg" alt="Profile Picture">
-            </a>
-
-
-
-
-
-
-
-
-
-        </div>
-    </nav>
-
-
-
-
-
-
-
-
+    <nav th:replace="~{fragments/navbar::navbar}"></nav>
 
 
 </header>
 
 <div>
-    <p> </p>
+    <p></p>
 </div>
-
 
 
 <main class="p-5 align-content-center my-register-div bg-blur">
 
-        <div class="col-lg-8 ">
-            <div class="card mb-4">
-                <div class="card-body">
+    <div class="col-lg-8 ">
+        <div class="card mb-4">
+            <div class="card-body">
 
 
-                    <h2 class="align-content-center bg-dark text-white">About Us</h2>
+                <h2 class="align-content-center bg-dark text-white">About Us</h2>
 
-                    <p class="align-content-center bg-dark text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
-                        molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
-                        numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
-                        optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
-                        obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
-                        nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
-                        tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
-                        quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
-                        sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
-                        recusandae alias error harum maxime adipisci amet laborum. Perspiciatis
-                        minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit
-                        quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur
-                        fugiat, temporibus enim commodi iusto libero magni deleniti quod quam
-                        consequuntur! Commodi minima excepturi repudiandae velit hic maxime
-                        doloremque. Quaerat provident commodi consectetur veniam similique ad
-                        earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo
-                        fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore
-                        suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium
-                        modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam
-                        totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam
-                        quasi aliquam eligendi, placeat qui corporis!</p>
-
-
-
+                <p class="align-content-center bg-dark text-white">Lorem ipsum dolor sit amet consectetur adipisicing
+                    elit. Maxime mollitia,
+                    molestiae quas vel sint commodi repudiandae consequuntur voluptatum laborum
+                    numquam blanditiis harum quisquam eius sed odit fugiat iusto fuga praesentium
+                    optio, eaque rerum! Provident similique accusantium nemo autem. Veritatis
+                    obcaecati tenetur iure eius earum ut molestias architecto voluptate aliquam
+                    nihil, eveniet aliquid culpa officia aut! Impedit sit sunt quaerat, odit,
+                    tenetur error, harum nesciunt ipsum debitis quas aliquid. Reprehenderit,
+                    quia. Quo neque error repudiandae fuga? Ipsa laudantium molestias eos
+                    sapiente officiis modi at sunt excepturi expedita sint? Sed quibusdam
+                    recusandae alias error harum maxime adipisci amet laborum. Perspiciatis
+                    minima nesciunt dolorem! Officiis iure rerum voluptates a cumque velit
+                    quibusdam sed amet tempora. Sit laborum ab, eius fugit doloribus tenetur
+                    fugiat, temporibus enim commodi iusto libero magni deleniti quod quam
+                    consequuntur! Commodi minima excepturi repudiandae velit hic maxime
+                    doloremque. Quaerat provident commodi consectetur veniam similique ad
+                    earum omnis ipsum saepe, voluptas, hic voluptates pariatur est explicabo
+                    fugiat, dolorum eligendi quam cupiditate excepturi mollitia maiores labore
+                    suscipit quas? Nulla, placeat. Voluptatem quaerat non architecto ab laudantium
+                    modi minima sunt esse temporibus sint culpa, recusandae aliquam numquam
+                    totam ratione voluptas quod exercitationem fuga. Possimus quis earum veniam
+                    quasi aliquam eligendi, placeat qui corporis!</p>
 
 
-
-                </div>
             </div>
-
         </div>
+
+    </div>
     </div>
     </div>
     </section>
-
-
 
 
 </main>
 </body>
 
 
-
-
-
-
-<footer class="footer bg-blur rounded">
-    <div class="container-fluid text-center">
-        <div class="h5 text-white">
-            Spring Advanced Students 2021. All rights reserved.
-        </div>
-    </div>
-</footer>
+<footer th:replace="~{fragments/footer::footer}"></footer>
 </html>

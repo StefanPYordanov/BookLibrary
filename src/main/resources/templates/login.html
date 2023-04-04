@@ -1,60 +1,8 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org">
-<head th:replace="~{fragments/head::head}">
+<head th:replace="~{fragments/head::head}"></head>
 
-</head>
-
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="collapse navbar-collapse" id="navbar">
-
-
-
-
-
-
-
-        <ul
-
-                class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" th:href="@{/}">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/login}">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" th:href="@{/register}">Register</a>
-            </li>
-
-
-        </ul>
-
-
-
-
-
-
-
-
-        <a class="nav-link" href="/">
-            <img width="50px" src="/images/profilepicture.jpg" alt="Profile Picture">
-        </a>
-
-
-
-
-
-
-
-
-
-    </div>
-</nav>
-
-
-
-
+<nav th:replace="~{fragments/navbar::navbar}"></nav>
 
 <body>
 <main class="p-5 align-content-center bg-blur my-register-div">
@@ -63,43 +11,30 @@
 
         <div class="row g-3 align-items-center">
 
-
-
-
-            <form  th:action="@{/login}"
-                   method="POST">
-
-
-
-
+            <form method="POST"
+                  th:action="@{/login}">
 
 
                 <div class="form-group align-content-center">
                     <input
-                           id="username"
-                           name="username"
-                           th:value="${username}"
-                           type="text" min = "4" max = "50"
-                           class="form-control"
-                           placeholder="Username"/>
+                            class="form-control"
+                            id="username"
+                            max="50"
+                            min="4" name="username" placeholder="Username"
+                            th:value="${username}"
+                            type="text"/>
                     <label class="form-label" for="username">Username</label>
                 </div>
 
 
-
-
-
-
-
-
                 <div class="form-group align-content-center">
                     <input
+                            class="form-control"
                             id="password"
-                            name="password"
+                            max="50"
+                            min="2" name="password" placeholder="Password"
                             th:value="${password}"
-                            type="password" min = "2" max = "50"
-                            placeholder="Password"
-                            class="form-control" />
+                            type="password"/>
                     <label class="form-label" for="password">Password</label>
                 </div>
 
@@ -108,15 +43,10 @@
                 </p>
 
 
-
-
-
-
-
                 <!-- Submit button -->
                 <div class="col col-md-4">
                     <div class="button-holder d-flex">
-                        <input type="submit" class="btn btn-info btn-lg" value="Sign In"/>
+                        <input class="btn btn-info btn-lg" type="submit" value="Sign In"/>
                     </div>
                 </div>
 
@@ -124,12 +54,10 @@
                 <!-- Register buttons -->
                 <div class="text-center">
 
-                    <p class="text-danger" >Not a member? <a th:href="@{/register}">Register</a></p>
+                    <p class="text-danger">Not a member? <a th:href="@{/register}">Register</a></p>
 
                 </div>
             </form>
-
-
 
 
         </div>
@@ -138,22 +66,6 @@
 </main>
 
 
-
-
-
-
-
-
-
-
-
-
-<footer class="footer bg-blur rounded">
-    <div class="container-fluid text-center">
-        <div class="h5 text-white">
-            Spring Advanced Students 2021. All rights reserved.
-        </div>
-    </div>
-</footer>
+<footer th:replace="~{fragments/footer::footer}"></footer>
 </body>
 </html>

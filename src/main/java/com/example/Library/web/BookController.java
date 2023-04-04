@@ -5,6 +5,7 @@ import com.example.Library.model.dto.BookViewDto;
 import com.example.Library.model.entity.AuthorEntity;
 import com.example.Library.model.entity.GenreEntity;
 import com.example.Library.repository.AuthorRepository;
+import com.example.Library.repository.BookRepository;
 import com.example.Library.repository.GenreRepository;
 import com.example.Library.service.AuthorService;
 import com.example.Library.service.BookService;
@@ -30,15 +31,18 @@ public class BookController {
     private final GenreService genreService;
 
     private final AuthorService authorService;
+    private final BookRepository bookRepository;
 
     @Autowired
     public BookController(BookService bookService, GenreRepository genreRepository,
-                          AuthorRepository authorRepository, GenreService genreService, AuthorService authorService) {
+                          AuthorRepository authorRepository, GenreService genreService, AuthorService authorService,
+                          BookRepository bookRepository) {
         this.bookService = bookService;
         this.genreRepository = genreRepository;
         this.authorRepository = authorRepository;
         this.genreService = genreService;
         this.authorService = authorService;
+        this.bookRepository = bookRepository;
     }
 
     @GetMapping("/addbook")
@@ -91,12 +95,20 @@ public class BookController {
     }
 
     @GetMapping("/details/{id}")
-    public String getRoute(@PathVariable("id") Long bookId, Model model) {
+    public String getBook(@PathVariable("id") Long bookId, Model model) {
         BookViewDto book = bookService.getBook(bookId);
 
         model.addAttribute("book", book);
 
         return "book-details";
+    }
+
+    @DeleteMapping("/details/{id}")
+    public String deleteBook(@PathVariable("id") Long bookId){
+
+        bookRepository.deleteById(bookId);
+
+        return "redirect:/allbooks";
     }
 
 }

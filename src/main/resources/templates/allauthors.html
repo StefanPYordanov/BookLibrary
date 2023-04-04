@@ -1,77 +1,17 @@
 <html lang="en"
+      xmlns:sec="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
 
-<head th:replace="~{fragments/head::head}">
-
-</head>
-
-
+<head th:replace="~{fragments/head::head}"></head>
 
 
 <body>
 <div class="wrapper">
-    <!-- Navigation -->
     <header>
 
-
-
-
-
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse" id="navbar">
-
-
-
-
-
-
-
-                <ul
-
-                        class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/login}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/register}">Register</a>
-
-
-                </ul>
-
-
-
-
-
-
-
-
-                <a class="nav-link" th:href="@{/profile}">
-                    <img width="50px" src="/images/profilepicture.jpg" alt="Profile Picture">
-                </a>
-
-
-
-
-
-
-
-
-
-            </div>
-        </nav>
-
-
-
-
+        <nav th:replace="~{fragments/navbar::navbar}"></nav>
 
     </header>
-
-
-
 
 
     <section class="road" th:each="author : ${authors}" th:object="${author}">
@@ -79,27 +19,13 @@
             <h2 th:text="*{name}">Your Name</h2>
             <p th:text="*{yearOfBirth}">Your Year</p>
             <p th:text="*{nationality}">Your Nationality</p>
-
         </div>
     </section>
 
 
-
 </div>
-<!-- Wrapper Ends -->
+
 </body>
 
-
-
-
-
-
-
-<footer class="footer bg-blur rounded">
-    <div class="container-fluid text-center">
-        <div class="h5 text-white">
-            Spring Advanced Students 2021. All rights reserved.
-        </div>
-    </div>
-</footer>
+<footer th:replace="~{fragments/footer::footer}"></footer>
 </html>

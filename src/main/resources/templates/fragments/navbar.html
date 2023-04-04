@@ -1,105 +1,67 @@
-<!DOCTYPE html>
 <html lang="en"
-      xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-
-<header>
+      xmlns:sec="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
 
 
+<nav class="navbar navbar-expand-lg navbar-light bg-light" th:fragment="navbar">
+    <div class="collapse navbar-collapse" id="navbar">
+
+        <ul class="navbar-nav mr-auto">
+
+            <th:block sec:authorize="isAuthenticated()">
+
+                <a class="nav-link" th:href="@{/}">Home</a>
+
+                <a class="nav-link" th:href="@{/addbook}">AddBook</a>
+
+                <a class="nav-link" th:href="@{/addauthor}">AddAuthor</a>
+
+                <a class="nav-link" th:href="@{/profile}">Profile</a>
 
 
+            </th:block>
+
+            <!--Not Logged Users-->
+            <th:block sec:authorize="!isAuthenticated()">
+
+                <a class="nav-link" th:href="@{/}">Home</a>
+
+                <a class="nav-link" th:href="@{/login}">Login</a>
+
+                <a class="nav-link" th:href="@{/register}">Register</a>
+
+                <!--<a class="nav-link" th:href="@{/about}">AboutUs</a>-->
+
+                <!--<a class="nav-link" th:href="@{/allbooks}">AllBooks</a>-->
+
+                <!--<a class="nav-link" th:href="@{/allauthors}">AllAuthors</a>-->
+
+            </th:block>
+
+            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+
+                <a class="nav-link" th:href="@{/admin}">Admin</a>
+
+            </th:block>
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="collapse navbar-collapse" id="navbar">
+        </ul>
 
 
+        <li class="nav-item" sec:authorize="isAuthenticated()">
+            <div class="form-inline my-2 my-lg-0 px-3">
+                <h4><div class="text-dark">Welcome,
+                    <th:block sec:authentication="name"></th:block>
+                    !
+                </div></h4>
+                <form
+                        th:action="@{/logout}"
+                        th:method="post">
+                    <input class="btn btn-link nav-link" type="submit" value="Logout">
+                </form>
+            </div>
+        </li>
 
 
-
-
-
-            <ul
-
-                    class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" th:href="@{/}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/login}">Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/register}">Register</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/about}">AboutUs</a>
-                </li>
-
-
-                <li class="nav-item justify-content-end">
-                    <a class="nav-link" th:href="@{/addbook}">AddBook</a>
-                </li>
-
-                <li class="nav-item justify-content-end">
-                    <a class="nav-link" th:href="@{/allbooks}">AllBooks</a>
-                </li>
-
-                <li class="nav-item justify-content-end">
-                    <a class="nav-link" th:href="@{/addauthor}">AddAuthor</a>
-                </li>
-
-                <li class="nav-item justify-content-end">
-                    <a class="nav-link" th:href="@{/allauthors}">AllAuthors</a>
-                </li>
-
-
-            </ul>
-
-
-
-            <li class="nav-item" sec:authorize="isAuthenticated()">
-                <div class="form-inline my-2 my-lg-0 px-3">
-                    <div class="text-dark">Welcome, <th:block sec:authentication="name"></th:block>!</div>
-                    <form
-                            th:method="post"
-                            th:action="@{/logout}">
-                        <input class="btn btn-link nav-link" type="submit" value="Logout">
-                    </form>
-                </div>
-            </li>
-
-
-            <a class="nav-link" th:href="@{/profile}">
-                <img width="50px" src="/images/profilepicture.jpg" alt="Profile Picture">
-            </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </div>
-    </nav>
-
-
-
-
-
-
-</header>
-
-
-
-</html>
+    </div>
+</nav>

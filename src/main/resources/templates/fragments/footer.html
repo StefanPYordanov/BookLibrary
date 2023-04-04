@@ -1,13 +1,19 @@
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
 <footer class="footer bg-blur rounded" th:fragment="footer">
-  <div class="container-fluid text-center">
-    <div class="h5 text-white">
-      Book Library. All rights reserved.
-      <h1></h1>
-      <h5>Address:</h5>
-      <h5>Phone:</h5>
-      <h5>Mail:</h5>
-      <a class="nav-link" th:href="@{/about}">AboutUs</a>
+    <div class="container-fluid text-center">
+        <div class="h5 text-white">
 
+            <p> &copy; Book Library. All rights reserved. </p>
+
+            <h3><a class="nav-link" th:href="@{/about}">AboutUs</a></h3>
+
+            <h3>Address: <h5>Sofia blv. Bulgaria 157</h5></h3>
+
+            <h3>Phone: <h5>+555 55 55</h5></h3>
+
+            <h3>Mail: <h5>office@booklibrary@example.com</h5></h3>
+
+        </div>
     </div>
-  </div>
 </footer>

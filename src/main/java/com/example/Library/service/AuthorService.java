@@ -2,14 +2,9 @@ package com.example.Library.service;
 
 
 import com.example.Library.model.dto.AddAuthorDto;
-import com.example.Library.model.dto.AddBookDto;
-import com.example.Library.model.dto.BookViewDto;
 import com.example.Library.model.entity.AuthorEntity;
-import com.example.Library.model.entity.BookEntity;
-import com.example.Library.model.entity.UserEntity;
 import com.example.Library.repository.AuthorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -23,7 +18,7 @@ public class AuthorService {
         this.authorRepository = authorRepository;
     }
 
-    public List<AuthorEntity> getAllAuthors () {
+    public List<AuthorEntity> getAllAuthors() {
         return authorRepository.findAll();
     }
 
@@ -54,6 +49,7 @@ public class AuthorService {
                 .setNationality(authorEntity.getNationality());
 
     }
+
 }
 
 

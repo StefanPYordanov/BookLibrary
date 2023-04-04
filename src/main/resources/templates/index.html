@@ -1,164 +1,52 @@
 <html lang="en"
       xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.w3.org/1999/xhtml">
+>
 
-<head th:replace="~{fragments/head::head}">
-
-</head>
-
-
+<head th:replace="~{fragments/head::head}"></head>
 
 <body>
-
-
-<div  class="wrapper ">
+<div class="wrapper ">
 
     <header>
 
+        <nav th:replace="~{fragments/navbar::navbar}"></nav>
 
-
-
-
-
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="collapse navbar-collapse" id="navbar">
-
-
-
-
-
-
-
-                <ul
-
-                        class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/}">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/login}">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/register}">Register</a>
-                    </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/about}">AboutUs</a>
-                    </li>
-
-
-                    <li class="nav-item justify-content-end">
-                            <a class="nav-link" th:href="@{/addbook}">AddBook</a>
-                        </li>
-
-                    <li class="nav-item justify-content-end">
-                        <a class="nav-link" th:href="@{/allbooks}">AllBooks</a>
-                    </li>
-
-                    <li class="nav-item justify-content-end">
-                        <a class="nav-link" th:href="@{/addauthor}">AddAuthor</a>
-                    </li>
-
-                    <li class="nav-item justify-content-end">
-                        <a class="nav-link" th:href="@{/allauthors}">AllAuthors</a>
-                    </li>
-                    <li class="nav-item justify-content-end">
-                        <a class="nav-link" th:href="@{/admin}">Admin</a>
-                    </li>
-
-                </ul>
-
-
-
-                    <li class="nav-item" sec:authorize="isAuthenticated()">
-                        <div class="form-inline my-2 my-lg-0 px-3">
-                            <div class="text-dark">Welcome, <th:block sec:authentication="name"></th:block>!</div>
-                            <form
-                                    th:method="post"
-                                    th:action="@{/logout}">
-                                <input class="btn btn-link nav-link" type="submit" value="Logout">
-                            </form>
-                        </div>
-                    </li>
-
-
-                    <a class="nav-link" th:href="@{/profile}">
-                        <img width="50px" src="/images/profilepicture.jpg" alt="Profile Picture">
-                    </a>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </div>
-        </nav>
-
-
-
-
-
-
-</header>
-
-
-
-
-
-
-
-
-
-
-
+    </header>
 
 
     <section class="road">
-        <img src="/images/spotlight-book.jpg" alt="">
+        <img alt="" src="/images/spotlight-book.jpg">
         <div>
             <h2>Spotlight Book</h2>
             <p>This month we recommend to our readers </p>
-            <a th:href="@{/spotlight}" class="btn">Learn More</a>
+            <a class="btn" th:href="@{/spotlight}">Learn More</a>
         </div>
     </section>
 
 
-
-
     <section class="boxes">
-        <a th:href="@{/allbooks}" class="main-btn" >
+        <a class="main-btn" th:href="@{/allbooks}">
             <div class="box">
 
                 <h3>All Books</h3>
 
             </div>
         </a>
-        <a th:href="@{/allauthors}" class="main-btn" >
+        <a class="main-btn" th:href="@{/allauthors}">
             <div class="box">
 
                 <h3>All Authors</h3>
 
             </div>
         </a>
-        <a href="/" class="main-btn" >
+        <a class="main-btn" href="/">
             <div class="box">
 
                 <h3>Best Sellers</h3>
 
             </div>
         </a>
-        <a href="/" class="main-btn" >
+        <a class="main-btn" href="/">
             <div class="box">
 
                 <h3>Most Commented</h3>
@@ -169,17 +57,12 @@
 
 
 </div>
-<!-- Wrapper Ends -->'
 
-<footer th:replace="~{fragments/footer::footer}">
 
-</footer>
-
+<footer th:replace="~{fragments/footer::footer}"></footer>
 
 </body>
 </html>
-
-
 
 
 <!--
