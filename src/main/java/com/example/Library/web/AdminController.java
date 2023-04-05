@@ -3,14 +3,17 @@ package com.example.Library.web;
 import com.example.Library.model.dto.BookViewDto;
 import com.example.Library.model.dto.UserDto;
 import com.example.Library.model.entity.UserEntity;
+import com.example.Library.model.entity.UserRoleEntity;
+import com.example.Library.model.enums.RoleTypeEnum;
+import com.example.Library.repository.UserRepository;
+import com.example.Library.repository.UserRoleRepository;
 import com.example.Library.service.UserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @Controller
@@ -18,9 +21,15 @@ import java.util.stream.Collectors;
 public class AdminController {
 
     private final UserService userService;
+    private final UserRepository userRepository;
+    private final UserRoleRepository userRoleRepository;
 
-    public AdminController(UserService userService) {
+    public AdminController(UserService userService,
+                           UserRepository userRepository,
+                           UserRoleRepository userRoleRepository) {
         this.userService = userService;
+        this.userRepository = userRepository;
+        this.userRoleRepository = userRoleRepository;
     }
 
     @GetMapping("/admin")
@@ -33,5 +42,57 @@ public class AdminController {
         return "admin";
     }
 
+    @DeleteMapping("/remove-roles/admin/{id}")
+    public String deleteUser(@PathVariable("id") Long userId){
+
+        userRepository.deleteById(userId);
+
+        return "redirect:/admin";
+    }
+
+    @PatchMapping("/remove-roles/admin/{id}")
+    public String deleteRole(@PathVariable("id") Long userId){
+
+        var user = userService.getUserById(userId); //hold user details
+
+        user.setRoles(new ArrayList<>());
+
+       userRepository.save(user);
+
+        return "redirect:/admin";
+    }
+
+    @PatchMapping("/add-roles/admin/{id}")
+    public String giveAdminRole(@PathVariable("id") Long userId){
+
+        var user = userService.getUserById(userId); //hold user details
+
+        var admin = new UserRoleEntity().setRole(RoleTypeEnum.ADMIN);
+
+        user.setRoles(userRoleRepository.findAll());
+
+        userRepository.save(user);
+
+        return "redirect:/admin";
+    }
+
+    @PatchMapping("/add-moderator/admin/{id}")
+    public String giveModeratorRole(@PathVariable("id") Long userId){
+
+        var user = userService.getUserById(userId); //hold user details
+
+        user.setRoles(userRoleRepository.findUserRoleByRole(RoleTypeEnum.MODERATOR));
+
+        userRepository.save(user);
+
+        return "redirect:/admin";
+    }
+
+
+
+
+
 
 }
+
+//TODO: In admin.html need to visualise roles with enum name, now they visualise as objects
