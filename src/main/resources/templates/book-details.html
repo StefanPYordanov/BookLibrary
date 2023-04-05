@@ -19,7 +19,7 @@
             <h1>Comments</h1>
             <div>
                 <!-- Comments submission -->
-                <form action="@{/details/{id}(id=*{id})}" id="commentForm"
+                <form action="@{/api/{id}(id=*{id})/comments/{id}(id=*{id})}" id="commentForm"
                       method="POST">
                     <div class="form-group">
                         <h4>Leave a comment</h4>
@@ -52,7 +52,6 @@
             </div>
             <!-- EO: All comments section -->
         </section>
-        <p style="visibility: hidden">GPX Download: <a id="gpxDownload"></a></p>
     </div>
     <!-- Scripts: track and comments
     <script th:src="@{/js/track.js}"></script> -->
