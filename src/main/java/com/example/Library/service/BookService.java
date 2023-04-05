@@ -81,9 +81,27 @@ public class BookService {
                 .setAuthor(bookEntity.getAuthor().getName())
                 .setGenre(bookEntity.getGenre().getGenreName().toString())
                 .setReleaseYear(bookEntity.getReleaseYear())
-                .setPages(bookEntity.getPages());
+                .setPages(bookEntity.getPages())
+                .setRating(bookEntity.getRating());
 
     }
+
+    public BookEntity getOneBook(long id) {
+        return bookRepository
+                    .findById(id)
+                    .orElseThrow(IllegalArgumentException::new);
+    }
+
+    public BookEntity rate(long id){
+        BookEntity book = getOneBook(id);
+
+        book.setRating(book.getRating() + 1);
+
+        return bookRepository.save(book);
+    }
+
+
+
 }
 
 

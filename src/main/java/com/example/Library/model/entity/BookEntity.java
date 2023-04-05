@@ -25,6 +25,9 @@ public class BookEntity {
     @Column(nullable = false)
     private long pages;
 
+    @Column
+    private long rating;
+
     public BookEntity() {
     }
 
@@ -82,6 +85,15 @@ public class BookEntity {
 
     public BookEntity setPages(long pages) {
         this.pages = pages;
+        return this;
+    }
+
+    public long getRating() {
+        return rating;
+    }
+
+    public BookEntity setRating(long rating) {
+        this.rating = rating;
         return this;
     }
 }

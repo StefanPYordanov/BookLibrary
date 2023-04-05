@@ -79,7 +79,7 @@ public class InitService {
                 .setPassword(passwordEncoder.encode("moderator12345"))
                 .setEmail("moderator@example.com")
                 .setFullName("Moderator Moderatov")
-                .setRoles(userRoleRepository.findAll());
+                .setRoles(userRoleRepository.findUserRoleByRole(RoleTypeEnum.MODERATOR));
 
         userRepository.save(moderator);
     }

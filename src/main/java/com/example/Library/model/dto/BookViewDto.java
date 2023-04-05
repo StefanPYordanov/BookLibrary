@@ -16,6 +16,8 @@ public class BookViewDto {
 
     private long pages;
 
+    private long rating;
+
     public BookViewDto() {
     }
 
@@ -74,6 +76,15 @@ public class BookViewDto {
 
     public BookViewDto setPages(long pages) {
         this.pages = pages;
+        return this;
+    }
+
+    public long getRating() {
+        return rating;
+    }
+
+    public BookViewDto setRating(long rating) {
+        this.rating = rating;
         return this;
     }
 }
