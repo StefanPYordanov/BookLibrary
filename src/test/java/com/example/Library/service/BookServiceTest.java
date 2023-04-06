@@ -1,10 +1,10 @@
 package com.example.Library.service;
 
 import com.example.Library.model.dto.AddBookDto;
+import com.example.Library.model.dto.BookViewDto;
 import com.example.Library.model.entity.AuthorEntity;
 import com.example.Library.model.entity.BookEntity;
 import com.example.Library.model.entity.GenreEntity;
-import com.example.Library.model.entity.UserEntity;
 import com.example.Library.model.enums.GenreTypeEnum;
 import com.example.Library.repository.BookRepository;
 import org.junit.jupiter.api.Assertions;
@@ -16,6 +16,8 @@ import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.Mockito.verify;
@@ -98,5 +100,4 @@ public class BookServiceTest {
 
         Assertions.assertEquals(1L, findedBook.getRating());
     }
-
 }
