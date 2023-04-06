@@ -20,56 +20,43 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 public class ApplicationUserDetailsServiceTest {
-
-    private final String NOT_EXISTING_USERNAME = "not exist";
-    private final String EXISTING_USERNAME = "admin";
-    private final String PASSWORD = "admin12345";
-
     private ApplicationUserDetailsService toTest;
-
     @Mock
     private UserRepository mockUserRepository;
-
     @BeforeEach
     void setUp() {
         toTest = new ApplicationUserDetailsService(
                 mockUserRepository
         );
     }
-
     @Test
-    void userFoundTest() {
-
-
+    void testUserNotFound() {
+        Assertions.assertThrows(
+                UsernameNotFoundException.class,
+                () -> toTest.loadUserByUsername("not_existing_username")
+        );
+    }
+    @Test
+    void testUserFound() {
         UserRoleEntity testAdminRole = new UserRoleEntity().setRole(RoleTypeEnum.ADMIN);
-        UserRoleEntity testModeratorRole = new UserRoleEntity().setRole(RoleTypeEnum.MODERATOR);
+        UserRoleEntity testUserRole = new UserRoleEntity().setRole(RoleTypeEnum.MODERATOR);
 
+        UserEntity testUserEntity = new UserEntity()
+                .setUsername("test")
+                .setPassword("test12345")
+                .setRoles(List.of(testAdminRole, testUserRole));
 
-        UserEntity testUserEntity = new UserEntity().
-                setUsername(EXISTING_USERNAME).
-                setPassword(PASSWORD).
-                setRoles(List.of(testAdminRole, testModeratorRole));
-
-
-        when(mockUserRepository.findUserEntityByUsername(EXISTING_USERNAME)).
+        when(mockUserRepository.findUserEntityByUsername("test")).
                 thenReturn(Optional.of(testUserEntity));
 
         UserDetails adminDetails =
-                toTest.loadUserByUsername(EXISTING_USERNAME);
+                toTest.loadUserByUsername("test");
 
         Assertions.assertNotNull(adminDetails);
-        Assertions.assertEquals(EXISTING_USERNAME, adminDetails.getUsername());
+        Assertions.assertEquals("test", adminDetails.getUsername());
         Assertions.assertEquals(testUserEntity.getPassword(), adminDetails.getPassword());
 
         Assertions.assertEquals(2,
                 adminDetails.getAuthorities().size());
-    }
-
-    @Test
-    void testUserNotFound() {
-       Assertions.assertThrows(
-                UsernameNotFoundException.class,
-                () -> toTest.loadUserByUsername(NOT_EXISTING_USERNAME)
-        );
     }
 }

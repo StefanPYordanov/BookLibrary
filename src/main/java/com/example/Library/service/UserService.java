@@ -16,12 +16,9 @@ import java.util.List;
 public class UserService {
     private final UserRepository userRepository;
 
-    private final UserRoleRepository userRoleRepository;
-
     @Autowired
-    public UserService(UserRepository userRepository, UserRoleRepository userRoleRepository) {
+    public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-        this.userRoleRepository = userRoleRepository;
     }
 
     public UserEntity getUser(String username) {

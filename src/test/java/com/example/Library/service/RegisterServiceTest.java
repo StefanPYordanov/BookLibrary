@@ -54,7 +54,7 @@ public class RegisterServiceTest {
         Assertions.assertEquals("encoded password", savedUser.getPassword());
     }
     @Test()
-    void testGetUserByUsername(){
+    void testUsernameNotFound(){
         Assertions.assertThrows(UsernameNotFoundException.class,
                 () -> toTest.getUser("user_not_exist"));
     }

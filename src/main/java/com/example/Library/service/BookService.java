@@ -42,17 +42,6 @@ public class BookService {
         this.bookRepository.save(book);
     }
 
-/*    public List<BookViewDto> getAllBooks() {
-        return bookRepository.findAll().stream().map(book -> new BookViewDto(
-                book.getId(),
-                book.getName(),
-                book.getAuthor(),
-                book.getGenre(),
-                book.getReleaseYear(),
-                book.getPages()
-        )).collect(Collectors.toList());
-    }*/
-
     public BookViewDto getBook(Long id) {
         return bookRepository.findById(id).map(book -> new BookViewDto(
                 book.getId(),
@@ -63,7 +52,6 @@ public class BookService {
                 book.getPages()
         )).orElseThrow(RuntimeException::new);
     }
-
 
     public List<BookViewDto> getAllBooks() {
         return
