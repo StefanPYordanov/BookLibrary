@@ -5,6 +5,7 @@ import com.example.Library.model.dto.BookViewDto;
 import com.example.Library.model.entity.AuthorEntity;
 import com.example.Library.model.entity.BookEntity;
 import com.example.Library.model.entity.GenreEntity;
+import com.example.Library.model.entity.UserEntity;
 import com.example.Library.model.enums.GenreTypeEnum;
 import com.example.Library.repository.BookRepository;
 import org.junit.jupiter.api.Assertions;
@@ -100,4 +101,38 @@ public class BookServiceTest {
 
         Assertions.assertEquals(1L, findedBook.getRating());
     }
+
+    @Test
+    void testGetAllBooks(){
+        BookEntity testBook = new BookEntity()
+                .setId(1L)
+                .setName("Test Book")
+                .setAuthor(new AuthorEntity().setName("Test"))
+                .setGenre(new GenreEntity().setGenreName(GenreTypeEnum.Fantasy))
+                .setReleaseYear(2013L)
+                .setPages(100L)
+                .setRating(0L);
+
+        BookEntity testBook2 = new BookEntity()
+                .setId(2L)
+                .setName("Test Book2")
+                .setAuthor(new AuthorEntity().setName("Test2"))
+                .setGenre(new GenreEntity().setGenreName(GenreTypeEnum.Drama))
+                .setReleaseYear(2018L)
+                .setPages(200L)
+                .setRating(8L);
+
+
+        List<BookEntity> listOfAllBooks = new ArrayList<>();
+
+        listOfAllBooks.add(testBook);
+        listOfAllBooks.add(testBook2);
+
+        when(mockBookRepository.findAll()).thenReturn(listOfAllBooks);
+
+        List<BookEntity> listOfAllBooksReturnedByRepository = toTest.getAlLBooks();
+
+        Assertions.assertEquals(2, listOfAllBooksReturnedByRepository.size());
+    }
+
 }
