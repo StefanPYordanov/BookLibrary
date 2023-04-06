@@ -24,7 +24,7 @@ public class RegisterService {
 
     public void register(RegistrationDto registrationDTO) {
         if (!registrationDTO.getPassword().equals(registrationDTO.getRepeatPassword())) {
-            throw new RuntimeException("passwords.match");
+            throw new RuntimeException("passwords don't match");
         }
 
         Optional<UserEntity> byEmail = this.userRepository.findByEmail(registrationDTO.getEmail());
