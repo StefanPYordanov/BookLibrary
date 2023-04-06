@@ -1,10 +1,9 @@
-package com.example.Library.Service;
+package com.example.Library.service;
 
 import com.example.Library.model.entity.UserEntity;
 import com.example.Library.model.entity.UserRoleEntity;
 import com.example.Library.model.enums.RoleTypeEnum;
 import com.example.Library.repository.UserRepository;
-import com.example.Library.service.ApplicationUserDetailsService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
