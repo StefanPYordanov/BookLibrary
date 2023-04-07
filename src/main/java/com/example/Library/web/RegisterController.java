@@ -3,6 +3,7 @@ package com.example.Library.web;
 import com.example.Library.model.dto.RegistrationDto;
 import com.example.Library.service.RegisterService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,6 +18,7 @@ public class RegisterController {
 
     private final RegisterService registerService;
 
+    @Autowired
     public RegisterController(RegisterService registerService) {
         this.registerService = registerService;
     }
