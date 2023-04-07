@@ -14,7 +14,7 @@ public class GenreEntity {
     @Enumerated(EnumType.STRING)
     private GenreTypeEnum genreName;
 
-    @Column(columnDefinition = "TEXT")
+    @Column()
     private String description;
 
     public GenreEntity() {

@@ -1,4 +1,4 @@
-const routeId = document.getElementById('routeId').value
+const bookId = document.getElementById('bookId').value
 const commentForm = document.getElementById('commentForm')
 commentForm.addEventListener("submit", handleFormSubmission)
 
@@ -12,7 +12,7 @@ async function handleFormSubmission(event) {
 
     const messageVal = document.getElementById('message').value
 
-    fetch(`http://localhost:8080/api/${routeId}/comments`, {
+    fetch(`http://localhost:8080/api/${bookId}/comments`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ function commentAsHtml(comment) {
     return commentHtml
 }
 
-fetch(`http://localhost:8080/api/${routeId}/comments`, {
+fetch(`http://localhost:8080/api/${bookId}/comments`, {
     headers: {
         "Accept": "application/json"
     }

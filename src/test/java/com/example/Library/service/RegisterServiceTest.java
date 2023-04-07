@@ -3,6 +3,7 @@ package com.example.Library.service;
 import com.example.Library.model.dto.RegistrationDto;
 import com.example.Library.model.entity.UserEntity;
 import com.example.Library.repository.UserRepository;
+import com.example.Library.repository.UserRoleRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -24,13 +25,16 @@ public class RegisterServiceTest {
     private UserRepository mockUserRepository;
     @Mock
     private PasswordEncoder mockPasswordEncoder;
+    @Mock
+    private UserRoleRepository mockUserRoleRepository;
     @Captor
     private ArgumentCaptor<UserEntity> userEntityCaptor;
     @BeforeEach
     void setUp() {
         toTest = new RegisterService(
                 mockUserRepository,
-                mockPasswordEncoder
+                mockPasswordEncoder,
+                mockUserRoleRepository
                 );
     }
     @Test

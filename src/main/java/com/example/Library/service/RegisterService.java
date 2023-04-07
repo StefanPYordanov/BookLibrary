@@ -2,7 +2,9 @@ package com.example.Library.service;
 
 import com.example.Library.model.dto.RegistrationDto;
 import com.example.Library.model.entity.UserEntity;
+import com.example.Library.model.enums.RoleTypeEnum;
 import com.example.Library.repository.UserRepository;
+import com.example.Library.repository.UserRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -16,10 +18,13 @@ public class RegisterService {
     private final UserRepository userRepository;
 
     private final PasswordEncoder passwordEncoder;
+
+    private final UserRoleRepository userRoleRepository;
     @Autowired
-    public RegisterService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public RegisterService(UserRepository userRepository, PasswordEncoder passwordEncoder, UserRoleRepository userRoleRepository ) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
+        this.userRoleRepository = userRoleRepository;
     }
 
     public void register(RegistrationDto registrationDTO) {
@@ -44,7 +49,8 @@ public class RegisterService {
                 setUsername(registrationDTO.getUsername()).
                 setEmail(registrationDTO.getEmail()).
                 setPassword(passwordEncoder.encode(registrationDTO.getPassword())).
-                setFullName(registrationDTO.getFullName());
+                setFullName(registrationDTO.getFullName()).
+                setRoles(userRoleRepository.findUserRoleByRole(RoleTypeEnum.USER));
 
 
         this.userRepository.save(user);

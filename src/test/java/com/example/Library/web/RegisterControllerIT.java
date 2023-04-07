@@ -1,5 +1,6 @@
 package com.example.Library.web;
 
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
@@ -17,16 +18,28 @@ public class RegisterControllerIT {
 
     @Test
     void testRegistration() throws Exception {
-        mockMvc.perform (post("/register")
-                        .param ("username", "admin")
-                        .param ("email", "admin@examle.com")
-                        .param ("password", "test password")
-                        .param ("confirmPassword", "test password")
-                        .param("fullName", "Test Testov")
-                )
-                .andExpect (status ()
-                        .is3xxRedirection ())
-                .andExpect (redirectedUrl ("/login"));
+        mockMvc.perform(post("/register").
+                        param("username", "testtest").
+                        param("email", "test@example.com").
+                        param("fullName", "Test Test").
+                        param("password", "test12345").
+                        param("confirmPassword", "test12345").
+                        with(csrf())
+                ).
+                andExpect(status().is3xxRedirection());
     }
 
+    @Test
+    void testRegistrationFailed() throws Exception {
+        mockMvc.perform (post("/register")
+                        .param ("username", "1L")
+                        .param ("fullName", "Test Test")
+                        .param ("email", "test@examle.com")
+                        .param ("password", "test12345")
+                        .param ("confirmPassword", "test12")
+                        .with (csrf())
+                ).andExpect (status ()
+                        .is3xxRedirection ())
+                .andExpect (redirectedUrl ("/register"));
+    }
 }

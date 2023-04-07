@@ -51,7 +51,7 @@ public class AuthorController {
 
         this.authorService.addAuthor(addAuthorDto);
 
-        return "redirect:/allauthors";
+        return "redirect:/allauthor";
 
     }
 

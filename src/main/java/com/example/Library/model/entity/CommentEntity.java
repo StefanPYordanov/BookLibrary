@@ -15,7 +15,7 @@ public class CommentEntity {
 
     private LocalDateTime created;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @Column(nullable = false)
     private String text;
 
     @ManyToOne

@@ -8,6 +8,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
@@ -20,11 +22,23 @@ public class LoginControllerIT {
     @Test
     void  testLogin() throws Exception {
         mockMvc.perform(get("/login")
-                .param("username", "test")
-                .param("password", "test")
+                .param("username", "testtest")
+                .param("password", "test12345")
                 .with (csrf())
         ).andExpect (status ()
                 .is2xxSuccessful ());
+    }
+
+
+    @Test
+    void testLoginFailed() throws Exception {
+        mockMvc.perform(post("/login")
+                        .param("username", "")
+                        .param("password", "")
+                        .with (csrf())
+                ).andExpect (status ()
+                        .is2xxSuccessful ());
+
     }
 
 }

@@ -55,7 +55,7 @@ public class AdminController {
 
         var user = userService.getUserById(userId); //hold user details
 
-        user.setRoles(new ArrayList<>());
+        user.setRoles(userRoleRepository.findUserRoleByRole(RoleTypeEnum.USER));
 
        userRepository.save(user);
 
@@ -75,24 +75,6 @@ public class AdminController {
 
         return "redirect:/admin";
     }
-
-    @PatchMapping("/add-moderator/admin/{id}")
-    public String giveModeratorRole(@PathVariable("id") Long userId){
-
-        var user = userService.getUserById(userId); //hold user details
-
-        user.setRoles(userRoleRepository.findUserRoleByRole(RoleTypeEnum.MODERATOR));
-
-        userRepository.save(user);
-
-        return "redirect:/admin";
-    }
-
-
-
-
-
-
 }
 
 //TODO: In admin.html need to visualise roles with enum name, now they visualise as objects

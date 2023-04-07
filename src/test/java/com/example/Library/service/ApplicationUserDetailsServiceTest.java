@@ -39,7 +39,7 @@ public class ApplicationUserDetailsServiceTest {
     @Test
     void testUserFound() {
         UserRoleEntity testAdminRole = new UserRoleEntity().setRole(RoleTypeEnum.ADMIN);
-        UserRoleEntity testUserRole = new UserRoleEntity().setRole(RoleTypeEnum.MODERATOR);
+        UserRoleEntity testUserRole = new UserRoleEntity().setRole(RoleTypeEnum.USER);
 
         UserEntity testUserEntity = new UserEntity()
                 .setUsername("test")

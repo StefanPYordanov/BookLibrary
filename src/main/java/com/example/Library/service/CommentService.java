@@ -52,5 +52,9 @@ public class CommentService {
 
         return new CommentViewDto(comment.getId(), author.getFullName(), comment.getText());
     }
+    public void deleteCommentsEveryYear() {
+        commentRepository.deleteAll(commentRepository.findAll());
+    }
+
 }
 

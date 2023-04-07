@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/head::head}"></head>
+
+<body id="error-body">
+<div id="container-wrapper">
+
+  <header>
+
+    <nav th:replace="~{fragments/navbar::navbar}"></nav>
+
+  </header>
+
+  <div id="root" class="justify-content-center p-lg-5">
+    <section id="error-type">
+      <h1 class="text-danger h4 col-md text-center"> Something went wrong, please go back to Home</h1>
+    </section>
+    <div class="text-center p-lg-3">
+      <a th:href="@{/}" class="btn btn-info">Home</a>
+    </div>
+  </div>
+</div>
+<footer>
+  <footer th:replace="~{fragments/footer::footer}"></footer>
+</footer>
+</body>
+
+</html>

@@ -42,10 +42,10 @@ public class InitService {
     private void initRoles() {
         if (userRoleRepository.count() == 0) {
             var admin = new UserRoleEntity().setRole(RoleTypeEnum.ADMIN);
-            var moderator = new UserRoleEntity().setRole(RoleTypeEnum.MODERATOR);
+            var user = new UserRoleEntity().setRole(RoleTypeEnum.USER);
 
             userRoleRepository.save(admin);
-            userRoleRepository.save(moderator);
+            userRoleRepository.save(user);
 
         }
     }
@@ -54,7 +54,7 @@ public class InitService {
     private void initUsers() {
         if (userRepository.count() == 0) {
             initAdmin();
-            initModerator();
+           /* initModerator();*/
             initUser();
         }
     }
@@ -72,7 +72,7 @@ public class InitService {
         userRepository.save(admin);
     }
 
-    private void initModerator() {
+/*    private void initModerator() {
 
         var moderator = new UserEntity()
                 .setUsername("moderator")
@@ -82,14 +82,16 @@ public class InitService {
                 .setRoles(userRoleRepository.findUserRoleByRole(RoleTypeEnum.MODERATOR));
 
         userRepository.save(moderator);
-    }
+    }*/
 
     private void initUser() {
         var user = new UserEntity()
                 .setUsername("user")
                 .setPassword(passwordEncoder.encode("user12345"))
                 .setEmail("user@example.com")
-                .setFullName("User Userov");
+                .setFullName("User Userov")
+                .setRoles(userRoleRepository.findUserRoleByRole(RoleTypeEnum.USER));
+
 
         userRepository.save(user);
     }
