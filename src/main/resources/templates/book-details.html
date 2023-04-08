@@ -12,8 +12,12 @@
 
     <div class="details-main" th:object="${book}">
         <section class="route-info text-center">
-            <h4 id="name" th:text="*{name}"></h4>
-            <p>Author name: <span id="author" th:text="${author}"></span></p>
+            <h2 th:text="'Title: ' + *{name}">Your Name</h2>
+            <p th:text="'Author: ' + *{author}">Your Author</p>
+            <p th:text="'Genre: ' + *{genre}">Your Genre</p>
+            <p th:text="'Release Year: ' + *{releaseYear}">Release Year</p>
+            <p th:text="'Pages: ' + *{pages}">Pages</p>
+            <p th:text="'Rating: ' + *{rating}">Rating</p>
 
 
             <h1>Comments</h1>

@@ -6,23 +6,20 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
-
-import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.redirectedUrl;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 @SpringBootTest
 @AutoConfigureMockMvc
 public class AdminControllerIT {
     @Autowired
     private MockMvc mockMvc;
-
-    //TODO: admin controller should move business logic to service !
     @Test
-    @WithMockUser(username = "test", roles = {"ADMIN"})
-    void testDeleteUser() throws Exception {
-        mockMvc.perform(delete("/remove-roles/admin/1")).
-                andExpect(status().is3xxRedirection())
-                .andExpect (redirectedUrl ("/admin"));
+    @WithMockUser(roles = {"ADMIN"})
+    void testGetAllUsersPage() throws Exception {
+        mockMvc.perform(get("/admin")
+                ).
+                andExpect(status().is2xxSuccessful()
+                );
     }
 }
+

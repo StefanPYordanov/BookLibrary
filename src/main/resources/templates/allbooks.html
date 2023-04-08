@@ -28,12 +28,11 @@
             <form
                     th:action="@{/details/{id}(id=*{id})}"
                     th:method="DELETE">
-                <!--<img id="box-b-img" src="/images/star" height="150px" alt="">-->
                 <input class="btn btn-link nav-link" type="submit" value="Delete Book">
             </form>
             </th:block>
             <div><p></p></div>
-            <th:block sec:authorize="hasRole('ROLE_ADMIN')">
+            <th:block sec:authorize="isAuthenticated()">
                 <form
                         th:action="@{/allbook/{id}(id=*{id})}"
                         th:method="PATCH">

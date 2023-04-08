@@ -12,12 +12,9 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-
 import java.util.List;
 import java.util.Optional;
-
 import static org.mockito.Mockito.when;
-
 @ExtendWith(MockitoExtension.class)
 public class ApplicationUserDetailsServiceTest {
     private ApplicationUserDetailsService toTest;
@@ -40,22 +37,17 @@ public class ApplicationUserDetailsServiceTest {
     void testUserFound() {
         UserRoleEntity testAdminRole = new UserRoleEntity().setRole(RoleTypeEnum.ADMIN);
         UserRoleEntity testUserRole = new UserRoleEntity().setRole(RoleTypeEnum.USER);
-
         UserEntity testUserEntity = new UserEntity()
                 .setUsername("test")
                 .setPassword("test12345")
                 .setRoles(List.of(testAdminRole, testUserRole));
-
         when(mockUserRepository.findUserEntityByUsername("test")).
                 thenReturn(Optional.of(testUserEntity));
-
         UserDetails adminDetails =
                 toTest.loadUserByUsername("test");
-
         Assertions.assertNotNull(adminDetails);
         Assertions.assertEquals("test", adminDetails.getUsername());
         Assertions.assertEquals(testUserEntity.getPassword(), adminDetails.getPassword());
-
         Assertions.assertEquals(2,
                 adminDetails.getAuthorities().size());
     }

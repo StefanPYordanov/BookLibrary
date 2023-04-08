@@ -14,51 +14,37 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 @Configuration
 public class SecurityConfiguration {
-
     private final UserRepository userRepository;
-
     public SecurityConfiguration(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-        http.
-                // defines which pages will be authorized
-                        authorizeHttpRequests().
-                // allow access to all static files (images, CSS, js)
-                        requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
-                // the URL-s below are available for all users - logged in and anonymous
-                        requestMatchers("/", "/login", "/register", "/spotlight", "/profile", "/allbooks", "/about", "/addbook", "/error", "/details/**", "/addauthor", "/allauthors", "/book-details", "/admin").permitAll().
-                anyRequest().authenticated().
-                and().
-                // configure login with HTML form
-                        formLogin().
-                loginPage("/login").
-                // the names of the username, password input fields in the custom login form
-                        usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY).
-                passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
-                // where do we go after login
-                        defaultSuccessUrl("/", true).//use true argument if you always want to go there, otherwise go to previous page
-                failureForwardUrl("/login-error"). //"/users/login-error"
-                and().logout().//configure logout
-                logoutUrl("/logout").
-                logoutSuccessUrl("/").//go to homepage after logout
-                invalidateHttpSession(true);
-
+        http.authorizeHttpRequests()
+                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
+                .requestMatchers("/", "/login", "/register", "/spotlight", "/about", "/error", "/details/**","/allauthors", "/allbooks","/book-details").permitAll()
+                .anyRequest()
+                .authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .usernameParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY)
+                .passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY)
+                .defaultSuccessUrl("/", true)
+                .failureForwardUrl("/login-error")
+                .and()
+                .logout()
+                .logoutUrl("/logout")
+                .logoutSuccessUrl("/")
+                .invalidateHttpSession(true);
         return http.build();
     }
-
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
     @Bean
     public UserDetailsService userDetailsService(UserRepository userRepository) {
         return new ApplicationUserDetailsService(userRepository);
     }
 }
-
-
-

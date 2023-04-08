@@ -14,10 +14,8 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
-
 @ExtendWith(MockitoExtension.class)
 public class RegisterServiceTest {
     private RegisterService toTest;
@@ -45,15 +43,10 @@ public class RegisterServiceTest {
                 .setEmail("test@example.com")
                 .setRepeatPassword("password")
                 .setFullName("Test Testov");
-
         when(mockPasswordEncoder.encode(testRegistrationDto.getPassword())).thenReturn("encoded password");
-
         toTest.register(testRegistrationDto);
-
         verify(mockUserRepository).save(userEntityCaptor.capture());
-
         UserEntity savedUser = userEntityCaptor.getValue();
-
         Assertions.assertEquals(testRegistrationDto.getUsername(), savedUser.getUsername());
         Assertions.assertEquals("encoded password", savedUser.getPassword());
     }
